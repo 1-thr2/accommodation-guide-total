@@ -101,8 +101,6 @@
             overflow: hidden;
             box-shadow: var(--box-shadow);
             border: 1px solid var(--border-color);
-            role: tablist;
-            aria-label: "숙소 정보 탭";
         }
         
         .tab {
@@ -114,7 +112,6 @@
             font-weight: 500;
             transition: all 0.2s ease;
             min-height: 44px;
-            role: tab;
         }
         
         .tab:active {
@@ -135,7 +132,6 @@
         
         .tab-content {
             display: none;
-            role: tabpanel;
         }
         
         .tab-content.active {
@@ -464,10 +460,6 @@
             position: relative;
             cursor: pointer;
             transition: all 0.2s ease;
-            /* 접근성 속성 */
-            role: checkbox;
-            aria-checked: false;
-            tabindex: 0;
         }
         
         .checkbox:focus {
@@ -478,8 +470,6 @@
         .checkbox.checked {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
-            /* 접근성 속성 */
-            aria-checked: true;
         }
         
         .checkbox.checked::after {
@@ -600,26 +590,140 @@
                 <div style="font-weight: 500; margin-bottom: 4px;">반갑습니다!</div>
                 <div style="color: var(--sub-text-color); font-size: 0.9rem;">편안한 숙박과 즐거운 추억이 되길 바랍니다.</div>
             </div>
+            
+            <!-- 호스트 문의 -->
+            <div class="host-contact">
+                <div class="host-contact-title">즐거운 여행 되셨나요?</div>
+                <p>소중한 후기를 남겨주시면 큰 도움이 됩니다 💕</p>
+                <a href="https://www.liveanywhere.me/" class="btn btn-arrow">후기 남기러 가기</a>
+            </div>
         </div>
+    </div>
+    
+    <script>
+        // 탭 전환 함수
+        function openTab(tabId) {
+            // 모든 탭 컨텐츠 숨기기
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // 모든 탭 버튼 비활성화
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            
+            // 선택한 탭 컨텐츠와 버튼 활성화
+            document.getElementById(tabId).classList.add("active");
+            
+            // 클릭한 탭 버튼 찾기
+            for (var i = 0; i < tabs.length; i++) {
+                if (tabs[i].getAttribute("onclick") && tabs[i].getAttribute("onclick").includes(tabId)) {
+                    tabs[i].classList.add("active");
+                }
+            }
+        }
+        
+        // 체크박스 토글 함수 및 진행률 업데이트
+        function toggleCheck(element) {
+            element.classList.toggle("checked");
+            
+            // 부모 요소에 체크 상태 클래스 추가/제거
+            const listItem = element.closest('.checklist-item');
+            if(listItem) {
+                if(element.classList.contains("checked")) {
+                    listItem.classList.add('checked');
+                } else {
+                    listItem.classList.remove('checked');
+                }
+            }
+            
+            updateChecklistProgress();
+        }
+        
+        // 체크리스트 진행률 업데이트
+        function updateChecklistProgress() {
+            const total = document.querySelectorAll('.checkbox').length;
+            const checked = document.querySelectorAll('.checkbox.checked').length;
+            const progressText = document.getElementById('checklistProgress');
+            
+            if(progressText) {
+                progressText.textContent = `${checked}/${total} 완료`;
+                
+                // 모두 완료 시 축하 메시지
+                if(checked === total && total > 0) {
+                    if(!document.getElementById('completionMessage')) {
+                        const message = document.createElement('div');
+                        message.id = 'completionMessage';
+                        message.className = 'success-notice celebrate';
+                        message.innerHTML = '🎉 모든 체크리스트를 완료했습니다! 안전한 귀가 되세요.';
+                        
+                        const checklistContainer = document.querySelector('.checklist');
+                        if(checklistContainer) {
+                            checklistContainer.parentNode.appendChild(message);
+                        }
+                    }
+                }
+            }
+        }
+        
+        // 현재 날짜 표시
+        function displayCurrentDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('ko-KR', options);
+            
+            const dateElement = document.getElementById('currentDate');
+            if(dateElement) {
+                dateElement.textContent = dateString;
+            }
+        }
+        
+        // 초기화 함수
+        document.addEventListener('DOMContentLoaded', function() {
+            // 현재 날짜 표시
+            displayCurrentDate();
+            
+            // 체크리스트 진행률 초기화
+            updateChecklistProgress();
+            
+            // 이미지 로딩 완료 처리
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                // 이미지 로딩 오류 처리
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    const errorMsg = document.createElement('div');
+                    errorMsg.textContent = '이미지를 불러올 수 없어요 😢';
+                    errorMsg.style.padding = '20px';
+                    errorMsg.style.textAlign = 'center';
+                    errorMsg.style.color = '#8B95A1';
+                    errorMsg.style.backgroundColor = '#f8f9fa';
+                    errorMsg.style.borderRadius = '8px';
+                    this.parentNode.appendChild(errorMsg);
+                });
+                
+                // 이미 캐시된 이미지를 위한 loaded 클래스 추가
+                if(img.complete) {
+                    img.classList.add('loaded');
+                }
+            });
+        });
+    </script>
         
         <!-- 탭 메뉴 -->
         <div class="tabs-container">
-            <div class="tabs" role="tablist" aria-label="숙소 정보 탭">
-                <div id="tab-directions" class="tab active" data-tab="directions" role="tab" aria-selected="true" aria-controls="directions" tabindex="0">오시는 길</div>
-                <div id="tab-info" class="tab" data-tab="info" role="tab" aria-selected="false" aria-controls="info" tabindex="0">숙소 안내사항</div>
-                <div id="tab-checkout" class="tab" data-tab="checkout" role="tab" aria-selected="false" aria-controls="checkout" tabindex="0">퇴실 체크리스트</div>
+            <div class="tabs">
+                <div class="tab active" onclick="openTab('directions')">오시는 길</div>
+                <div class="tab" onclick="openTab('info')">숙소 안내사항</div>
+                <div class="tab" onclick="openTab('checkout')">퇴실 체크리스트</div>
             </div>
         </div>
         
-        <script>
-            // 페이지 로드 시 변수 정의 - 탭 관련 문제 해결
-            document.addEventListener('DOMContentLoaded', function() {
-                window.tabsInitialized = false;
-            });
-        </script>
-        
         <!-- 숙소 안내사항 탭 -->
-        <div id="info" class="tab-content" role="tabpanel" aria-labelledby="tab-info" tabindex="0">
+        <div id="info" class="tab-content">
             <!-- 중요 정보 카드 -->
             <div class="card">
                 <div class="card-header">
@@ -710,11 +814,6 @@
                 </div>
             </div>
             
-            <!-- 길찾기 완료 메시지 -->
-            <div class="success-notice">
-                <span>🎉 길찾기 안내를 모두 읽으셨습니다! 즐거운 여행 되세요.</span>
-            </div>
-            
             <!-- 호스트 문의 -->
             <div class="host-contact">
                 <div class="host-contact-title">궁금한 점이 있으신가요?</div>
@@ -724,7 +823,7 @@
         </div>
         
         <!-- 오시는 길 탭 -->
-        <div id="directions" class="tab-content active" role="tabpanel" aria-labelledby="tab-directions" tabindex="0">
+        <div id="directions" class="tab-content active">
             <div class="notice">
                 <span class="notice-icon">⚠️</span>
                 <span>공동현관 비밀번호와 숙소 비밀번호는 입실 당일 아침에 알려드립니다.</span>
@@ -819,3 +918,89 @@
                     <div class="direction-content">
                         <div class="direction-text">찾아오시느라 수고하셨습니다! 편안한 휴식 되세요 😊</div>
                     </div>
+                </div>
+            </div>
+            
+            <!-- 길찾기 완료 메시지 -->
+            <div class="success-notice">
+                <span>🎉 길찾기 안내를 모두 읽으셨습니다! 즐거운 여행 되세요.</span>
+            </div>
+            
+            <!-- 호스트 문의 -->
+            <div class="host-contact">
+                <div class="host-contact-title">길을 찾기 어려우신가요?</div>
+                <p>언제든지 호스트에게 연락주세요!</p>
+                <a href="https://www.liveanywhere.me/" class="btn btn-arrow">호스트에게 문의하기</a>
+            </div>
+        </div>
+        
+        <!-- 퇴실 체크리스트 탭 -->
+        <div id="checkout" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">퇴실 전 체크리스트</div>
+                    <div class="card-subtitle">퇴실 전에 아래 항목들을 확인해주세요</div>
+                    <div class="checklist-header">
+                        <div id="checklistProgress" class="checklist-progress">0/8 완료</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                창문 닫기 - 모든 창문이 잘 닫혀있는지 확인해 주세요.
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                에어컨/히터 끄기 - 모든 전자제품의 전원이 꺼져있는지 확인해 주세요.
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                쓰레기 버리기 - 모든 쓰레기는 6층 쓰레기장에 분리수거해 주세요.
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                냉장고 비우기 - 냉장고 속 음식물을 모두 가져가시거나 처분해 주세요.
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                소지품 확인 - 중요한 개인 소지품을 놓고 가지 않았는지 확인해 주세요.
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                가스밸브 확인 - 가스밸브가 잘 잠겨있는지 확인해 주세요.
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                보일러 외출모드 - 보일러를 외출모드로 설정해 주세요.
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                문 잠그기 - 퇴실 시 문이 잘 잠겼는지 꼭 확인해 주세요.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
