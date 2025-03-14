@@ -491,6 +491,40 @@
         .lazy-image.loaded {
             opacity: 1;
         }
+        
+        /* 오프라인 저장 안내 */
+        .offline-notice {
+            text-align: center;
+            margin-top: 30px;
+            padding: 16px;
+            color: var(--gray-600);
+            font-size: 13px;
+        }
+        
+        .offline-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: var(--transition);
+        }
+        
+        .offline-btn:active {
+            background-color: var(--primary-light);
+        }
+        
+        .offline-btn-icon {
+            margin-right: 6px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -498,7 +532,6 @@
         <header>
             <h1>728호 숙소 안내</h1>
             <p class="subtitle">편안한 숙박을 위한 안내사항입니다 😊</p>
-            <p id="currentDate" class="subtitle" style="margin-top: 4px;"></p>
         </header>
         
         <!-- 환영 메시지 -->
@@ -784,6 +817,14 @@
             </button>
         </div>
         
+        <!-- 오프라인 저장 안내 -->
+        <div class="offline-notice">
+            와이파이 없이도 이 정보를 볼 수 있어요!
+            <button class="offline-btn" onclick="savePage()">
+                <span class="offline-btn-icon">📱</span>홈 화면에 추가하기
+            </button>
+        </div>
+        
         <!-- 플로팅 문의 버튼 -->
         <div class="contact-floating">
             <button class="contact-btn" onclick="location.href='https://www.liveanywhere.me/'">
@@ -901,15 +942,17 @@
             }
         }
         
-        // 현재 날짜 표시
-        function displayCurrentDate() {
-            const now = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            const dateString = now.toLocaleDateString('ko-KR', options);
+        // 홈 화면에 추가 안내
+        function savePage() {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            const isAndroid = /Android/.test(navigator.userAgent);
             
-            const dateElement = document.getElementById('currentDate');
-            if (dateElement) {
-                dateElement.textContent = dateString;
+            if (isIOS) {
+                alert('iOS에서 저장하기: 화면 하단의 "공유" 버튼을 누른 후 "홈 화면에 추가"를 선택하세요.');
+            } else if (isAndroid) {
+                alert('Android에서 저장하기: 브라우저 메뉴(⋮)를 탭한 후 "홈 화면에 추가"를 선택하세요.');
+            } else {
+                alert('이 페이지를 북마크하면 오프라인에서도 확인할 수 있습니다.');
             }
         }
         
@@ -956,9 +999,6 @@
         
         // 페이지 로드 시 초기화
         document.addEventListener('DOMContentLoaded', function() {
-            // 현재 날짜 표시
-            displayCurrentDate();
-            
             // 저장된 탭 상태 로드
             const savedTab = localStorage.getItem('activeTab');
             if (savedTab) {
