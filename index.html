@@ -559,11 +559,17 @@
             <div class="tab" onclick="openTab('checkout')">퇴실 안내</div>
         </div>
         
-        <!-- 오시는 길 탭 (원본 내용 유지) -->
+        <!-- 오시는 길 탭 (원본 내용 유지, 상단 버튼만 남김) -->
         <div id="directions" class="tab-content active">
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">🚶 남포역에서 숙소까지 오는 방법</div>
+                </div>
+                <div class="card-content">
+                    <!-- 상단에 실제 주소 반영한 카카오맵 버튼 -->
+                    <button class="btn" onclick="window.open('https://map.kakao.com/link/to/부산데파트,35.1011,129.0347')">
+                        카카오맵에서 길찾기
+                    </button>
                 </div>
             </div>
             
@@ -657,15 +663,9 @@
                 <img src="guide_10.JPG" alt="728호 문" class="direction-image lazy-image" loading="lazy">
             </div>
             
-            <!-- 길찾기 완료 메시지 -->
             <div class="success-message">
                 🎉 길찾기 안내를 모두 읽으셨습니다! 즐거운 여행 되세요.
             </div>
-            
-            <!-- 카카오맵 버튼 (실제 주소 반영) -->
-            <button class="btn" onclick="window.open('https://map.kakao.com/link/to/부산데파트,35.1011,129.0347')">
-                카카오맵에서 길찾기
-            </button>
         </div>
         
         <!-- 숙소 정보 탭 -->
