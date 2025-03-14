@@ -19,6 +19,8 @@
             background-color: #F9FAFB;
             color: #191F28;
             line-height: 1.5;
+            width: 100%;
+            overflow-x: hidden;
         }
         
         /* 메인 컨테이너 */
@@ -26,12 +28,12 @@
             max-width: 480px;
             margin: 0 auto;
             padding: 20px 16px;
-            overflow-x: hidden;
         }
         
         /* 헤더 스타일 */
         header {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            text-align: center;
         }
         
         h1 {
@@ -194,7 +196,7 @@
         .info-list {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 20px;
         }
         
         .info-item {
@@ -442,6 +444,21 @@
         .celebrate {
             animation: celebration 0.5s forwards;
         }
+        
+        /* 방향 단계 번호 */
+        .step-number {
+            width: 22px;
+            height: 22px;
+            background-color: #F3F4FF;
+            color: #4673EB;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
     </style>
 </head>
 <body>
@@ -486,7 +503,7 @@
                 <!-- 1단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="direction-number">1</div>
+                        <div class="step-number">1</div>
                         <div class="direction-title">남포역 7번 출구에서 나오세요.</div>
                     </div>
                     <img src="guide_1.JPG" alt="남포역 7번 출구" class="direction-image" loading="lazy">
@@ -495,7 +512,7 @@
                 <!-- 2단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="direction-number">2</div>
+                        <div class="step-number">2</div>
                         <div class="direction-title">나와서 고개를 우측으로 돌리면 커피빈이 보이고, 그 옆에 보이는 건물입니다.</div>
                     </div>
                     <img src="guide_2.JPG" alt="건물 전경" class="direction-image" loading="lazy">
@@ -504,7 +521,7 @@
                 <!-- 3단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="direction-number">3</div>
+                        <div class="step-number">3</div>
                         <div class="direction-title">건물 입구로 가까이 오세요.</div>
                     </div>
                     <img src="guide_3.JPG" alt="건물 가까운 전경" class="direction-image" loading="lazy">
@@ -513,7 +530,7 @@
                 <!-- 4단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="direction-number">4</div>
+                        <div class="step-number">4</div>
                         <div class="direction-title">비밀번호를 누르고 안으로 들어가세요.</div>
                     </div>
                     <img src="guide_4.JPG" alt="공동현관 비밀번호 키" class="direction-image" loading="lazy">
@@ -522,7 +539,7 @@
                 <!-- 5단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="direction-number">5</div>
+                        <div class="step-number">5</div>
                         <div class="direction-title">엘레베이터를 타고 6층으로 올라가세요.</div>
                     </div>
                     <img src="guide_5.JPG" alt="엘레베이터" class="direction-image" loading="lazy">
@@ -531,7 +548,7 @@
                 <!-- 6단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="direction-number">6</div>
+                        <div class="step-number">6</div>
                         <div class="direction-title">엘레베이터에서 내리면 이렇게 보입니다.</div>
                     </div>
                     <img src="guide_6.JPG" alt="엘레베이터 내리면 보이는 건물내부" class="direction-image" loading="lazy">
@@ -540,7 +557,7 @@
                 <!-- 7단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="direction-number">7</div>
+                        <div class="step-number">7</div>
                         <div class="direction-title">왼쪽으로 가보세요. 이런 복도가 보입니다.</div>
                     </div>
                     <img src="guide_7.JPG" alt="복도 모습" class="direction-image" loading="lazy">
@@ -549,7 +566,7 @@
                 <!-- 8단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="direction-number">8</div>
+                        <div class="step-number">8</div>
                         <div class="direction-title">이 건물을 따라 올라가세요.</div>
                     </div>
                     <img src="guide_8.JPG" alt="다시 올라갈 건물 모습" class="direction-image" loading="lazy">
@@ -558,7 +575,7 @@
                 <!-- 9단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="direction-number">9</div>
+                        <div class="step-number">9</div>
                         <div class="direction-title">계단을 따라 한 층 더 올라가세요.</div>
                     </div>
                     <img src="guide_9.JPG" alt="계단 모습" class="direction-image" loading="lazy">
@@ -567,7 +584,7 @@
                 <!-- 10단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="direction-number">10</div>
+                        <div class="step-number">10</div>
                         <div class="direction-title">도착했습니다! 728호가 여러분의 숙소입니다.</div>
                     </div>
                     <img src="guide_10.JPG" alt="728호 문" class="direction-image" loading="lazy">
@@ -586,124 +603,7 @@
             <div class="host-contact">
                 <div class="host-contact-title">길을 찾기 어려우신가요?</div>
                 <p>언제든지 호스트에게 연락주세요!</p>
-                <button class="btn btn-arrow" onclick="location.href='https://www.liveanywhere.me/'">후기 남기러 가기</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // 탭 전환 함수
-        function openTab(tabId) {
-            // 모든 탭 컨텐츠 숨기기
-            document.querySelectorAll('.tab-content').forEach(function(content) {
-                content.classList.remove('active');
-            });
-            
-            // 모든 탭 버튼 비활성화
-            document.querySelectorAll('.tab').forEach(function(tab) {
-                tab.classList.remove('active');
-            });
-            
-            // 선택한 탭 활성화
-            document.getElementById(tabId).classList.add('active');
-            
-            // 해당 탭 버튼 찾아서 활성화
-            document.querySelectorAll('.tab').forEach(function(tab) {
-                if(tab.getAttribute('onclick').includes(tabId)) {
-                    tab.classList.add('active');
-                }
-            });
-        }
-        
-        // 체크박스 토글 함수
-        function toggleCheck(element) {
-            // 체크박스 상태 토글
-            element.classList.toggle('checked');
-            
-            // 부모 항목에 체크 상태 적용
-            const item = element.closest('.checklist-item');
-            if (item) {
-                if (element.classList.contains('checked')) {
-                    item.classList.add('checked');
-                } else {
-                    item.classList.remove('checked');
-                }
-            }
-            
-            // 진행률 업데이트
-            updateProgress();
-        }
-        
-        // 체크리스트 진행률 업데이트
-        function updateProgress() {
-            const total = document.querySelectorAll('.checkbox').length;
-            const checked = document.querySelectorAll('.checkbox.checked').length;
-            const progress = document.getElementById('checklistProgress');
-            
-            if (progress) {
-                progress.textContent = `${checked}/${total} 완료`;
-                
-                // 모두 완료했을 때 축하 메시지 표시
-                if (checked === total && total > 0) {
-                    if (!document.getElementById('completionMessage')) {
-                        const message = document.createElement('div');
-                        message.id = 'completionMessage';
-                        message.className = 'success-notice celebrate';
-                        message.textContent = '🎉 모든 체크리스트를 완료했습니다! 안전한 귀가 되세요.';
-                        
-                        const card = document.querySelector('#checkout .card');
-                        if (card) {
-                            card.after(message);
-                        }
-                    }
-                }
-            }
-        }
-        
-        // 현재 날짜 표시
-        function displayCurrentDate() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const dateString = now.toLocaleDateString('ko-KR', options);
-            
-            const dateElement = document.getElementById('currentDate');
-            if (dateElement) {
-                dateElement.textContent = dateString;
-            }
-        }
-        
-        // 페이지 로드 시 초기화
-        document.addEventListener('DOMContentLoaded', function() {
-            // 현재 날짜 표시
-            displayCurrentDate();
-            
-            // 체크리스트 진행률 초기화
-            updateProgress();
-            
-            // 이미지 로딩 완료 시 스타일 적용
-            document.querySelectorAll('.direction-image').forEach(img => {
-                if (img.complete) {
-                    img.style.minHeight = 'auto';
-                } else {
-                    img.addEventListener('load', function() {
-                        this.style.minHeight = 'auto';
-                    });
-                }
-                
-                img.addEventListener('error', function() {
-                    this.style.display = 'none';
-                    
-                    const errorMessage = document.createElement('div');
-                    errorMessage.style.padding = '20px';
-                    errorMessage.style.textAlign = 'center';
-                    errorMessage.style.color = '#8B95A1';
-                    errorMessage.textContent = '이미지를 불러올 수 없어요 😢';
-                    
-                    this.parentNode.appendChild(errorMessage);
-                });
-            });
-        });
-    </script>>호스트에게 문의하기</button>
+                <button class="btn btn-arrow" onclick="location.href='https://www.liveanywhere.me/'">호스트에게 문의하기</button>
             </div>
         </div>
         
@@ -882,4 +782,123 @@
             <div class="host-contact">
                 <div class="host-contact-title">즐거운 여행 되셨나요?</div>
                 <p>소중한 후기를 남겨주시면 큰 도움이 됩니다 💕</p>
-                <button class="btn btn-arrow" onclick="location.href='https://www.liveanywhere.me/'
+                <button class="btn btn-arrow" onclick="location.href='https://www.liveanywhere.me/'">후기 남기러 가기</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 탭 전환 함수
+        function openTab(tabId) {
+            // 모든 탭 컨텐츠 숨기기
+            document.querySelectorAll('.tab-content').forEach(function(content) {
+                content.classList.remove('active');
+            });
+            
+            // 모든 탭 버튼 비활성화
+            document.querySelectorAll('.tab').forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+            
+            // 선택한 탭 활성화
+            document.getElementById(tabId).classList.add('active');
+            
+            // 해당 탭 버튼 찾아서 활성화
+            document.querySelectorAll('.tab').forEach(function(tab) {
+                if(tab.getAttribute('onclick').includes(tabId)) {
+                    tab.classList.add('active');
+                }
+            });
+        }
+        
+        // 체크박스 토글 함수
+        function toggleCheck(element) {
+            // 체크박스 상태 토글
+            element.classList.toggle('checked');
+            
+            // 부모 항목에 체크 상태 적용
+            const item = element.closest('.checklist-item');
+            if (item) {
+                if (element.classList.contains('checked')) {
+                    item.classList.add('checked');
+                } else {
+                    item.classList.remove('checked');
+                }
+            }
+            
+            // 진행률 업데이트
+            updateProgress();
+        }
+        
+        // 체크리스트 진행률 업데이트
+        function updateProgress() {
+            const total = document.querySelectorAll('.checkbox').length;
+            const checked = document.querySelectorAll('.checkbox.checked').length;
+            const progress = document.getElementById('checklistProgress');
+            
+            if (progress) {
+                progress.textContent = `${checked}/${total} 완료`;
+                
+                // 모두 완료했을 때 축하 메시지 표시
+                if (checked === total && total > 0) {
+                    if (!document.getElementById('completionMessage')) {
+                        const message = document.createElement('div');
+                        message.id = 'completionMessage';
+                        message.className = 'success-notice celebrate';
+                        message.textContent = '🎉 모든 체크리스트를 완료했습니다! 안전한 귀가 되세요.';
+                        
+                        const card = document.querySelector('#checkout .card');
+                        if (card) {
+                            card.after(message);
+                        }
+                    }
+                }
+            }
+        }
+        
+        // 현재 날짜 표시
+        function displayCurrentDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('ko-KR', options);
+            
+            const dateElement = document.getElementById('currentDate');
+            if (dateElement) {
+                dateElement.textContent = dateString;
+            }
+        }
+        
+        // 페이지 로드 시 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            // 현재 날짜 표시
+            displayCurrentDate();
+            
+            // 체크리스트 진행률 초기화
+            updateProgress();
+            
+            // 이미지 로딩 완료 시 스타일 적용
+            document.querySelectorAll('img').forEach(img => {
+                if (img.complete) {
+                    img.style.minHeight = 'auto';
+                } else {
+                    img.addEventListener('load', function() {
+                        this.style.minHeight = 'auto';
+                    });
+                }
+                
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    
+                    const errorMessage = document.createElement('div');
+                    errorMessage.style.padding = '20px';
+                    errorMessage.style.textAlign = 'center';
+                    errorMessage.style.color = '#8B95A1';
+                    errorMessage.textContent = '이미지를 불러올 수 없어요 😢';
+                    
+                    this.parentNode.appendChild(errorMessage);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
