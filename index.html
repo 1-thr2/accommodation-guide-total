@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>728호 숙소 정보</title>
+    <title>728호 숙소 안내 | 비밀번호·체크인·오시는길</title>
+    
+    <!-- Open Graph 태그 (링크 공유 최적화) -->
+    <meta property="og:title" content="728호 숙소 안내 | 비밀번호·체크인·오시는길">
+    <meta property="og:description" content="남포역 7번 출구에서 5분 거리, 편안한 숙박을 위한 모든 정보">
+    <meta property="og:image" content="https://1-thr2.github.io/accommodation-guide-total/room-preview.jpg">
+    <meta property="og:url" content="https://1-thr2.github.io/accommodation-guide-total/">
+    <meta property="og:type" content="website">
+    
+    <!-- 모바일 브라우저 테마 색상 -->
+    <meta name="theme-color" content="#4673EB">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- 파비콘 -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+    
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
         /* 리셋 스타일 */
         * {
@@ -15,9 +35,33 @@
             -webkit-tap-highlight-color: transparent;
         }
         
+        :root {
+            --primary: #4673EB;
+            --primary-light: #F3F4FF;
+            --primary-dark: #3A62D7;
+            --success: #2B8A3E;
+            --success-light: #EDF9F0;
+            --warning: #F08C00;
+            --warning-light: #FFF9DB;
+            --danger: #E03131;
+            --danger-light: #FFF5F5;
+            --gray-100: #F9FAFB;
+            --gray-200: #F2F4F6;
+            --gray-300: #E5E8EC;
+            --gray-400: #DDE2E5;
+            --gray-500: #8B95A1;
+            --gray-600: #4F5864;
+            --gray-700: #191F28;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.2s ease;
+        }
+        
         body {
-            background-color: #F9FAFB;
-            color: #191F28;
+            background-color: var(--gray-100);
+            color: var(--gray-700);
             line-height: 1.5;
             width: 100%;
             overflow-x: hidden;
@@ -27,12 +71,12 @@
         .container {
             max-width: 480px;
             margin: 0 auto;
-            padding: 20px 16px;
+            padding: 20px 16px 80px;
         }
         
         /* 헤더 스타일 */
         header {
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             text-align: center;
         }
         
@@ -44,59 +88,143 @@
         }
         
         .subtitle {
-            color: #8B95A1;
+            color: var(--gray-500);
             font-size: 15px;
         }
         
-        /* 환영 메시지 */
-        .welcome {
-            background-color: #F3F4FF;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 24px;
+        /* 핵심 정보 카드 */
+        .key-info {
+            background-color: white;
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-300);
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .key-info-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            font-weight: 700;
+            font-size: 16px;
             display: flex;
             align-items: center;
         }
         
-        .welcome-icon {
-            background-color: #4673EB;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .key-info-header svg {
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .key-info-content {
+            padding: 16px;
+        }
+        
+        .key-info-item {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+        
+        .key-info-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .key-info-icon {
+            width: 20px;
             margin-right: 12px;
             flex-shrink: 0;
-            font-size: 20px;
+            padding-top: 2px;
         }
         
-        .welcome-text {
+        .key-info-detail {
             flex: 1;
         }
         
-        .welcome-title {
+        .key-info-label {
             font-weight: 700;
-            margin-bottom: 4px;
-            font-size: 16px;
+            margin-bottom: 2px;
+            font-size: 15px;
         }
         
-        .welcome-message {
-            color: #4F5864;
+        .key-info-value {
+            color: var(--gray-600);
             font-size: 14px;
+        }
+        
+        .key-info-highlight {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .key-info-alert {
+            margin-top: 4px;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        /* 주요 버튼 (첫 화면에 노출) */
+        .main-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .main-action-btn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: 1px solid var(--gray-300);
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            padding: 16px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .main-action-btn:hover, .main-action-btn:active {
+            background-color: var(--primary-light);
+            border-color: var(--primary);
+        }
+        
+        .main-action-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .main-action-title {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        
+        .main-action-subtitle {
+            font-size: 12px;
+            color: var(--gray-500);
         }
         
         /* 탭 메뉴 */
         .tabs {
             display: flex;
-            border-radius: 12px;
+            border-radius: var(--radius);
             overflow: hidden;
             background-color: white;
-            border: 1px solid #E5E8EC;
+            border: 1px solid var(--gray-300);
             margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: var(--shadow);
         }
         
         .tab {
@@ -105,16 +233,17 @@
             padding: 14px 0;
             font-size: 15px;
             font-weight: 500;
-            color: #8B95A1;
+            color: var(--gray-500);
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: var(--transition);
             user-select: none;
         }
         
         .tab.active {
-            color: #4673EB;
-            background-color: #F3F4FF;
+            color: var(--primary);
             font-weight: 700;
+            background-color: var(--primary-light);
+            box-shadow: inset 0 -2px 0 var(--primary);
         }
         
         /* 탭 콘텐츠 */
@@ -136,12 +265,14 @@
         .notice {
             display: flex;
             align-items: flex-start;
-            background-color: #FFF5F5;
-            border-radius: 12px;
+            background-color: var(--primary-light);
+            border-radius: var(--radius);
             padding: 16px;
             margin-bottom: 20px;
-            color: #E03131;
+            color: var(--primary-dark);
             font-size: 14px;
+            border: 1px solid rgba(70, 115, 235, 0.3);
+            box-shadow: var(--shadow);
         }
         
         .notice-icon {
@@ -154,37 +285,46 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #EDF9F0;
-            border-radius: 12px;
+            background-color: var(--success-light);
+            border-radius: var(--radius);
             padding: 16px;
             margin: 20px 0;
-            color: #2B8A3E;
+            color: var(--success);
             font-size: 15px;
             text-align: center;
+            box-shadow: var(--shadow);
         }
         
         /* 카드 스타일 */
         .card {
             background-color: white;
-            border-radius: 12px;
-            border: 1px solid #E5E8EC;
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-300);
             margin-bottom: 16px;
             overflow: hidden;
+            box-shadow: var(--shadow);
         }
         
         .card-header {
             padding: 16px;
-            border-bottom: 1px solid #F2F4F6;
+            border-bottom: 1px solid var(--gray-200);
+            background-color: var(--primary-light);
         }
         
         .card-title {
             font-weight: 700;
             font-size: 17px;
             margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title-icon {
+            margin-right: 8px;
         }
         
         .card-subtitle {
-            color: #8B95A1;
+            color: var(--gray-600);
             font-size: 14px;
         }
         
@@ -206,8 +346,8 @@
         .info-icon {
             width: 32px;
             height: 32px;
-            background-color: #F3F4FF;
-            color: #4673EB;
+            background-color: var(--primary-light);
+            color: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -221,13 +361,13 @@
         }
         
         .info-label {
-            font-weight: 500;
+            font-weight: 700;
             margin-bottom: 4px;
             font-size: 15px;
         }
         
         .info-value {
-            color: #4F5864;
+            color: var(--gray-600);
             font-size: 14px;
         }
         
@@ -236,7 +376,8 @@
             margin-top: 12px;
             border-radius: 8px;
             overflow: hidden;
-            background-color: #F2F4F6;
+            background-color: var(--gray-200);
+            position: relative;
         }
         
         .image-container img {
@@ -254,16 +395,17 @@
         
         .direction-step {
             background-color: white;
-            border-radius: 12px;
-            border: 1px solid #E5E8EC;
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-300);
             overflow: hidden;
+            box-shadow: var(--shadow);
         }
         
         .direction-header {
             padding: 16px;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #F2F4F6;
+            border-bottom: 1px solid var(--gray-200);
         }
         
         .direction-number {
@@ -272,11 +414,11 @@
             justify-content: center;
             width: 24px;
             height: 24px;
-            background-color: #F3F4FF;
-            color: #4673EB;
+            background-color: var(--primary-light);
+            color: var(--primary);
             border-radius: 50%;
             font-weight: 700;
-            margin-right: 8px;
+            margin-right: 10px;
             font-size: 13px;
             flex-shrink: 0;
         }
@@ -284,18 +426,21 @@
         .direction-title {
             font-size: 15px;
             font-weight: 500;
+            flex: 1;
+            line-height: 1.4;
         }
         
         .direction-image {
             width: 100%;
             height: auto;
             display: block;
-            background: #F2F4F6;
-            min-height: 150px;
+            background-color: var(--gray-200);
         }
         
         .direction-content {
             padding: 16px;
+            color: var(--gray-600);
+            font-size: 14px;
         }
         
         /* 체크리스트 스타일 */
@@ -307,11 +452,11 @@
         }
         
         .checklist-progress {
-            background-color: #F3F4FF;
-            color: #4673EB;
+            background-color: var(--primary-light);
+            color: var(--primary);
             font-size: 13px;
             font-weight: 500;
-            padding: 4px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
         }
         
@@ -323,7 +468,7 @@
         .checklist-item {
             display: flex;
             padding: 12px 0;
-            border-bottom: 1px solid #F2F4F6;
+            border-bottom: 1px solid var(--gray-200);
         }
         
         .checklist-item:last-child {
@@ -334,26 +479,27 @@
             width: 22px;
             height: 22px;
             border-radius: 6px;
-            border: 2px solid #DDE2E5;
+            border: 2px solid var(--gray-400);
             margin-right: 12px;
             position: relative;
             cursor: pointer;
             flex-shrink: 0;
+            transition: all 0.2s;
         }
         
         .checkbox.checked {
-            background-color: #4673EB;
-            border-color: #4673EB;
+            background-color: var(--primary);
+            border-color: var(--primary);
         }
         
         .checkbox.checked::after {
             content: "";
             position: absolute;
             width: 6px;
-            height: 12px;
+            height: 10px;
             border: solid white;
             border-width: 0 2px 2px 0;
-            top: 2px;
+            top: 3px;
             left: 7px;
             transform: rotate(45deg);
         }
@@ -364,16 +510,16 @@
         }
         
         .checklist-item.checked .checklist-text {
-            color: #8B95A1;
+            color: var(--gray-500);
             text-decoration: line-through;
         }
         
         /* 팁 스타일 */
         .tip {
-            background-color: #FFF9DB;
-            color: #F08C00;
+            background-color: var(--warning-light);
+            color: var(--warning);
             padding: 16px;
-            border-radius: 12px;
+            border-radius: var(--radius);
             margin-top: 12px;
             font-size: 14px;
         }
@@ -391,35 +537,35 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            background-color: #4673EB;
+            background-color: var(--primary);
             color: white;
             border: none;
             border-radius: 8px;
             padding: 14px;
             font-size: 15px;
-            font-weight: 500;
+            font-weight: 700;
             cursor: pointer;
             margin-top: 16px;
-            transition: background-color 0.2s;
+            transition: var(--transition);
         }
         
-        .btn:active {
-            background-color: #3A62D7;
+        .btn:hover, .btn:active {
+            background-color: var(--primary-dark);
         }
         
-        .btn-arrow::after {
-            content: "→";
-            margin-left: 6px;
+        .btn-icon {
+            margin-right: 8px;
         }
         
         /* 호스트 문의 */
         .host-contact {
             background-color: white;
-            border-radius: 12px;
+            border-radius: var(--radius);
             padding: 20px;
             text-align: center;
             margin-top: 30px;
-            border: 1px solid #E5E8EC;
+            border: 1px solid var(--gray-300);
+            box-shadow: var(--shadow);
         }
         
         .host-contact-title {
@@ -430,7 +576,7 @@
         
         .host-contact p {
             font-size: 15px;
-            color: #4F5864;
+            color: var(--gray-600);
             margin-bottom: 16px;
         }
 
@@ -445,36 +591,178 @@
             animation: celebration 0.5s forwards;
         }
         
-        /* 방향 단계 번호 */
-        .step-number {
-            width: 22px;
-            height: 22px;
-            background-color: #F3F4FF;
-            color: #4673EB;
+        /* 플로팅 도움 버튼 */
+        .floating-help {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px;
-            font-weight: 600;
-            margin-right: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 100;
+            font-size: 24px;
+            transition: var(--transition);
+        }
+        
+        .floating-help:hover, .floating-help:active {
+            transform: scale(1.05);
+            background-color: var(--primary-dark);
+        }
+        
+        /* 다운로드 버튼 */
+        .download-btn {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .download-btn:hover, .download-btn:active {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+        
+        /* 다크모드 지원 */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-light: rgba(70, 115, 235, 0.2);
+                --gray-100: #121212;
+                --gray-200: #1e1e1e;
+                --gray-300: #2a2a2a;
+                --gray-400: #353535;
+                --gray-600: #b0b0b0;
+                --gray-700: #e0e0e0;
+            }
+            
+            body {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+            
+            .card, .key-info, .host-contact, .tabs, .main-action-btn, .direction-step {
+                background-color: #1a1a1a;
+                border-color: #2a2a2a;
+            }
+            
+            .card-header {
+                background-color: rgba(70, 115, 235, 0.2);
+            }
+            
+            .download-btn {
+                border-color: var(--primary);
+                color: var(--primary);
+            }
+        }
+        
+        /* 로딩 스켈레톤 */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: var(--radius-sm);
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .skeleton {
+                background: linear-gradient(90deg, #232323 25%, #2a2a2a 50%, #232323 75%);
+                background-size: 200% 100%;
+            }
+        }
+        
+        /* 이미지 로딩 최적화 */
+        .lazy-image {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lazy-image.loaded {
+            opacity: 1;
+        }
+        
+        /* 접근성 개선 */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>728호 숙소 정보</h1>
+            <h1>728호 숙소 안내</h1>
             <p class="subtitle">편안한 숙박을 위한 안내사항입니다 😊</p>
             <p id="currentDate" class="subtitle" style="margin-top: 6px;"></p>
         </header>
         
-        <!-- 환영 메시지 -->
-        <div class="welcome">
-            <div class="welcome-icon">👋</div>
-            <div class="welcome-text">
-                <div class="welcome-title">반갑습니다!</div>
-                <div class="welcome-message">편안한 숙박과 즐거운 추억이 되길 바랍니다.</div>
+        <!-- 핵심 정보 카드 -->
+        <div class="key-info">
+            <div class="key-info-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="16" x2="12" y2="12"/>
+                    <line x1="12" y1="8" x2="12.01" y2="8"/>
+                </svg>
+                꼭 알아야 할 정보
+            </div>
+            <div class="key-info-content">
+                <div class="key-info-item">
+                    <div class="key-info-icon">🔑</div>
+                    <div class="key-info-detail">
+                        <div class="key-info-label">비밀번호 안내</div>
+                        <div class="key-info-value">공동현관 및 숙소 비밀번호는 <span class="key-info-highlight">입실 당일 아침</span>에 알려드립니다.</div>
+                    </div>
+                </div>
+                <div class="key-info-item">
+                    <div class="key-info-icon">🕒</div>
+                    <div class="key-info-detail">
+                        <div class="key-info-label">체크인/체크아웃</div>
+                        <div class="key-info-value">체크인: <span class="key-info-highlight">오전 10시부터</span> / 체크아웃: <span class="key-info-highlight">오후 3시까지</span></div>
+                    </div>
+                </div>
+                <div class="key-info-item">
+                    <div class="key-info-icon">📶</div>
+                    <div class="key-info-detail">
+                        <div class="key-info-label">와이파이</div>
+                        <div class="key-info-value">TV 뒤 공유기에서 확인하실 수 있습니다.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 주요 액션 버튼 -->
+        <div class="main-actions">
+            <div class="main-action-btn" onclick="openTab('directions')">
+                <div class="main-action-icon">🚶</div>
+                <div class="main-action-title">숙소 찾기</div>
+                <div class="main-action-subtitle">오시는 길 안내</div>
+            </div>
+            <div class="main-action-btn" onclick="openTab('info')">
+                <div class="main-action-icon">🏠</div>
+                <div class="main-action-title">숙소 정보</div>
+                <div class="main-action-subtitle">시설 및 편의사항</div>
+            </div>
+            <div class="main-action-btn" onclick="openTab('checkout')">
+                <div class="main-action-icon">📝</div>
+                <div class="main-action-title">퇴실 안내</div>
+                <div class="main-action-subtitle">체크아웃 절차</div>
             </div>
         </div>
         
@@ -488,13 +776,13 @@
         <!-- 오시는 길 탭 -->
         <div id="directions" class="tab-content active">
             <div class="notice">
-                <div class="notice-icon">⚠️</div>
+                <div class="notice-icon">ℹ️</div>
                 <div>공동현관 비밀번호와 숙소 비밀번호는 입실 당일 아침에 알려드립니다.</div>
             </div>
             
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">남포역에서 숙소까지 오는 방법</div>
+                    <div class="card-title"><span class="card-title-icon">🚶</span>남포역에서 숙소까지 오는 방법</div>
                     <div class="card-subtitle">사진과 함께 자세히 안내해 드립니다</div>
                 </div>
             </div>
@@ -503,91 +791,91 @@
                 <!-- 1단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="step-number">1</div>
+                        <div class="direction-number">1</div>
                         <div class="direction-title">남포역 7번 출구에서 나오세요.</div>
                     </div>
-                    <img src="guide_1.JPG" alt="남포역 7번 출구" class="direction-image" loading="lazy">
+                    <img src="guide_1.JPG" alt="남포역 7번 출구" class="direction-image lazy-image" loading="lazy">
                 </div>
                 
                 <!-- 2단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="step-number">2</div>
+                        <div class="direction-number">2</div>
                         <div class="direction-title">나와서 고개를 우측으로 돌리면 커피빈이 보이고, 그 옆에 보이는 건물입니다.</div>
                     </div>
-                    <img src="guide_2.JPG" alt="건물 전경" class="direction-image" loading="lazy">
+                    <img src="guide_2.JPG" alt="건물 전경" class="direction-image lazy-image" loading="lazy">
                 </div>
                 
                 <!-- 3단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="step-number">3</div>
+                        <div class="direction-number">3</div>
                         <div class="direction-title">건물 입구로 가까이 오세요.</div>
                     </div>
-                    <img src="guide_3.JPG" alt="건물 가까운 전경" class="direction-image" loading="lazy">
+                    <img src="guide_3.JPG" alt="건물 가까운 전경" class="direction-image lazy-image" loading="lazy">
                 </div>
                 
                 <!-- 4단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="step-number">4</div>
+                        <div class="direction-number">4</div>
                         <div class="direction-title">비밀번호를 누르고 안으로 들어가세요.</div>
                     </div>
-                    <img src="guide_4.JPG" alt="공동현관 비밀번호 키" class="direction-image" loading="lazy">
+                    <img src="guide_4.JPG" alt="공동현관 비밀번호 키" class="direction-image lazy-image" loading="lazy">
                 </div>
                 
                 <!-- 5단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="step-number">5</div>
+                        <div class="direction-number">5</div>
                         <div class="direction-title">엘레베이터를 타고 6층으로 올라가세요.</div>
                     </div>
-                    <img src="guide_5.JPG" alt="엘레베이터" class="direction-image" loading="lazy">
+                    <img src="guide_5.JPG" alt="엘레베이터" class="direction-image lazy-image" loading="lazy">
                 </div>
                 
                 <!-- 6단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="step-number">6</div>
+                        <div class="direction-number">6</div>
                         <div class="direction-title">엘레베이터에서 내리면 이렇게 보입니다.</div>
                     </div>
-                    <img src="guide_6.JPG" alt="엘레베이터 내리면 보이는 건물내부" class="direction-image" loading="lazy">
+                    <img src="guide_6.JPG" alt="엘레베이터 내리면 보이는 건물내부" class="direction-image lazy-image" loading="lazy">
                 </div>
                 
                 <!-- 7단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="step-number">7</div>
+                        <div class="direction-number">7</div>
                         <div class="direction-title">왼쪽으로 가보세요. 이런 복도가 보입니다.</div>
                     </div>
-                    <img src="guide_7.JPG" alt="복도 모습" class="direction-image" loading="lazy">
+                    <img src="guide_7.JPG" alt="복도 모습" class="direction-image lazy-image" loading="lazy">
                 </div>
                 
                 <!-- 8단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="step-number">8</div>
+                        <div class="direction-number">8</div>
                         <div class="direction-title">이 건물을 따라 올라가세요.</div>
                     </div>
-                    <img src="guide_8.JPG" alt="다시 올라갈 건물 모습" class="direction-image" loading="lazy">
+                    <img src="guide_8.JPG" alt="다시 올라갈 건물 모습" class="direction-image lazy-image" loading="lazy">
                 </div>
                 
                 <!-- 9단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="step-number">9</div>
+                        <div class="direction-number">9</div>
                         <div class="direction-title">계단을 따라 한 층 더 올라가세요.</div>
                     </div>
-                    <img src="guide_9.JPG" alt="계단 모습" class="direction-image" loading="lazy">
+                    <img src="guide_9.JPG" alt="계단 모습" class="direction-image lazy-image" loading="lazy">
                 </div>
                 
                 <!-- 10단계 -->
                 <div class="direction-step">
                     <div class="direction-header">
-                        <div class="step-number">10</div>
+                        <div class="direction-number">10</div>
                         <div class="direction-title">도착했습니다! 728호가 여러분의 숙소입니다.</div>
                     </div>
-                    <img src="guide_10.JPG" alt="728호 문" class="direction-image" loading="lazy">
+                    <img src="guide_10.JPG" alt="728호 문" class="direction-image lazy-image" loading="lazy">
                     <div class="direction-content">
                         <div>찾아오시느라 수고하셨습니다! 편안한 휴식 되세요 😊</div>
                     </div>
@@ -599,11 +887,18 @@
                 🎉 길찾기 안내를 모두 읽으셨습니다! 즐거운 여행 되세요.
             </div>
             
+            <!-- 카카오맵 바로가기 -->
+            <button class="btn" onclick="window.open('https://map.kakao.com/link/to/남포동 728호,35.0980,129.0347')">
+                <span class="btn-icon">🗺️</span>카카오맵에서 길찾기
+            </button>
+            
             <!-- 호스트 문의 -->
             <div class="host-contact">
                 <div class="host-contact-title">길을 찾기 어려우신가요?</div>
                 <p>언제든지 호스트에게 연락주세요!</p>
-                <button class="btn btn-arrow" onclick="location.href='https://www.liveanywhere.me/'">호스트에게 문의하기</button>
+                <button class="btn" onclick="location.href='https://www.liveanywhere.me/'">
+                    <span class="btn-icon">💬</span>호스트에게 문의하기
+                </button>
             </div>
         </div>
         
@@ -612,7 +907,7 @@
             <!-- 중요 정보 카드 -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">숙소 기본 정보</div>
+                    <div class="card-title"><span class="card-title-icon">🏠</span>숙소 기본 정보</div>
                     <div class="card-subtitle">편안한 투숙을 위해 꼭 확인해주세요</div>
                 </div>
                 <div class="card-content">
@@ -639,7 +934,7 @@
                                 <div class="info-label">쓰레기 배출</div>
                                 <div class="info-value">6층 쓰레기 배출 장소에 일반/음식물/재활용으로 분리해주세요</div>
                                 <div class="image-container">
-                                    <img src="image_1.JPG" alt="6층 쓰레기 배출 장소" loading="lazy">
+                                    <img src="image_1.JPG" alt="6층 쓰레기 배출 장소" class="lazy-image" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -659,7 +954,7 @@
             <!-- 주변 편의시설 정보 -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">주변 편의시설</div>
+                    <div class="card-title"><span class="card-title-icon">🏪</span>주변 편의시설</div>
                     <div class="card-subtitle">숙소 근처에서 이용할 수 있는 시설들이에요</div>
                 </div>
                 <div class="card-content">
@@ -703,7 +998,9 @@
             <div class="host-contact">
                 <div class="host-contact-title">궁금한 점이 있으신가요?</div>
                 <p>언제든지 편하게 문의해 주세요!</p>
-                <button class="btn btn-arrow" onclick="location.href='https://www.liveanywhere.me/'">호스트에게 문의하기</button>
+                <button class="btn" onclick="location.href='https://www.liveanywhere.me/'">
+                    <span class="btn-icon">💬</span>호스트에게 문의하기
+                </button>
             </div>
         </div>
         
@@ -711,7 +1008,7 @@
         <div id="checkout" class="tab-content">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">퇴실 전 체크리스트</div>
+                    <div class="card-title"><span class="card-title-icon">📝</span>퇴실 전 체크리스트</div>
                     <div class="card-subtitle">퇴실 전에 아래 항목들을 확인해주세요</div>
                 </div>
                 <div class="card-content">
@@ -782,9 +1079,23 @@
             <div class="host-contact">
                 <div class="host-contact-title">즐거운 여행 되셨나요?</div>
                 <p>소중한 후기를 남겨주시면 큰 도움이 됩니다 💕</p>
-                <button class="btn btn-arrow" onclick="location.href='https://www.liveanywhere.me/'">후기 남기러 가기</button>
+                <button class="btn" onclick="location.href='https://www.liveanywhere.me/'">
+                    <span class="btn-icon">⭐</span>후기 남기러 가기
+                </button>
             </div>
         </div>
+        
+        <!-- 오프라인 보기 옵션 -->
+        <div class="host-contact" style="margin-top: 50px;">
+            <div class="host-contact-title">오프라인에서도 볼 수 있어요</div>
+            <p>여행 중 인터넷이 끊겨도 참고할 수 있도록 저장해두세요</p>
+            <button class="btn download-btn" onclick="savePage()">
+                <span class="btn-icon">📱</span>홈 화면에 추가하기
+            </button>
+        </div>
+        
+        <!-- 플로팅 도움말 버튼 -->
+        <div class="floating-help" onclick="location.href='https://www.liveanywhere.me/'">💬</div>
     </div>
 
     <script>
@@ -809,6 +1120,12 @@
                     tab.classList.add('active');
                 }
             });
+            
+            // 상태 저장 (현재 탭)
+            localStorage.setItem('activeTab', tabId);
+            
+            // 탭 변경 시 스크롤 상단으로
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
         // 체크박스 토글 함수
@@ -828,6 +1145,35 @@
             
             // 진행률 업데이트
             updateProgress();
+            
+            // 체크 상태 저장
+            saveChecklistState();
+        }
+        
+        // 체크리스트 상태 저장
+        function saveChecklistState() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const states = Array.from(checkboxes).map(checkbox => checkbox.classList.contains('checked'));
+            localStorage.setItem('checklistState', JSON.stringify(states));
+        }
+        
+        // 체크리스트 상태 복원
+        function loadChecklistState() {
+            const savedState = localStorage.getItem('checklistState');
+            if (savedState) {
+                const states = JSON.parse(savedState);
+                const checkboxes = document.querySelectorAll('.checkbox');
+                
+                checkboxes.forEach((checkbox, index) => {
+                    if (states[index]) {
+                        checkbox.classList.add('checked');
+                        const item = checkbox.closest('.checklist-item');
+                        if (item) item.classList.add('checked');
+                    }
+                });
+                
+                updateProgress();
+            }
         }
         
         // 체크리스트 진행률 업데이트
@@ -852,6 +1198,11 @@
                             card.after(message);
                         }
                     }
+                } else {
+                    const completionMessage = document.getElementById('completionMessage');
+                    if (completionMessage) {
+                        completionMessage.remove();
+                    }
                 }
             }
         }
@@ -868,34 +1219,74 @@
             }
         }
         
+        // 이미지 지연 로딩 처리
+        function handleLazyImages() {
+            const lazyImages = document.querySelectorAll('.lazy-image');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const image = entry.target;
+                            image.classList.add('loaded');
+                            imageObserver.unobserve(image);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(image => {
+                    imageObserver.observe(image);
+                });
+            } else {
+                // 폴백: 모든 이미지 즉시 표시
+                lazyImages.forEach(image => {
+                    image.classList.add('loaded');
+                });
+            }
+        }
+        
+        // 홈 화면에 추가 안내
+        function savePage() {
+            // PWA가 아니므로 간단한 안내 alert만 표시
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            const isAndroid = /Android/.test(navigator.userAgent);
+            
+            if (isIOS) {
+                alert('iOS에서 저장하기: 화면 하단의 "공유" 버튼을 누른 후 "홈 화면에 추가"를 선택하세요.');
+            } else if (isAndroid) {
+                alert('Android에서 저장하기: 브라우저 메뉴(⋮)를 탭한 후 "홈 화면에 추가"를 선택하세요.');
+            } else {
+                alert('이 페이지를 북마크하여 나중에 오프라인에서도 볼 수 있습니다.');
+            }
+        }
+        
         // 페이지 로드 시 초기화
         document.addEventListener('DOMContentLoaded', function() {
             // 현재 날짜 표시
             displayCurrentDate();
             
-            // 체크리스트 진행률 초기화
-            updateProgress();
+            // 저장된 탭 상태 로드
+            const savedTab = localStorage.getItem('activeTab');
+            if (savedTab) {
+                openTab(savedTab);
+            }
             
-            // 이미지 로딩 완료 시 스타일 적용
+            // 체크리스트 상태 로드
+            loadChecklistState();
+            
+            // 이미지 지연 로딩 처리
+            handleLazyImages();
+            
+            // 이미지 오류 처리
             document.querySelectorAll('img').forEach(img => {
-                if (img.complete) {
-                    img.style.minHeight = 'auto';
-                } else {
-                    img.addEventListener('load', function() {
-                        this.style.minHeight = 'auto';
-                    });
-                }
-                
                 img.addEventListener('error', function() {
                     this.style.display = 'none';
-                    
-                    const errorMessage = document.createElement('div');
-                    errorMessage.style.padding = '20px';
-                    errorMessage.style.textAlign = 'center';
-                    errorMessage.style.color = '#8B95A1';
-                    errorMessage.textContent = '이미지를 불러올 수 없어요 😢';
-                    
-                    this.parentNode.appendChild(errorMessage);
+                    const errorMsg = document.createElement('div');
+                    errorMsg.style.padding = '20px';
+                    errorMsg.style.textAlign = 'center';
+                    errorMsg.style.color = '#8B95A1';
+                    errorMsg.textContent = '이미지를 불러올 수 없어요 😢';
+                    this.parentNode.appendChild(errorMsg);
                 });
             });
         });
