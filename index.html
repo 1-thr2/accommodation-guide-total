@@ -322,6 +322,10 @@
                 <span class="tab-icon">📋</span>
                 숙소 안내사항
             </div>
+            <div class="tab" onclick="openTab('directions')">
+                <span class="tab-icon">🚶</span>
+                오시는 길
+            </div>
             <div class="tab" onclick="openTab('checkout')">
                 <span class="tab-icon">✅</span>
                 퇴실 체크리스트
@@ -406,6 +410,121 @@
             </div>
         </div>
         
+        <!-- 오시는 길 탭 내용 -->
+        <div id="directions" class="tab-content">
+            <div class="guide-steps">
+                <div class="guide-step">
+                    <div class="step-image-container">
+                        <img src="guide_1.JPG" alt="남포역 7번 출구" class="step-image">
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">1</div>
+                        <div class="step-description"><span class="highlight">남포역 7번 출구</span>에서 나오세요.</div>
+                    </div>
+                </div>
+                
+                <div class="guide-step">
+                    <div class="step-image-container">
+                        <img src="guide_2.JPG" alt="건물 전경" class="step-image">
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">2</div>
+                        <div class="step-description">나와서 고개를 <span class="highlight">우측으로 돌리면</span> 커피빈이 보이고, 그 옆에 보이는 건물입니다.</div>
+                    </div>
+                </div>
+                
+                <div class="guide-step">
+                    <div class="step-image-container">
+                        <img src="guide_3.JPG" alt="건물 가까운 전경" class="step-image">
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">3</div>
+                        <div class="step-description">건물 입구로 가까이 오세요.</div>
+                    </div>
+                </div>
+                
+                <div class="guide-step">
+                    <div class="step-image-container">
+                        <img src="guide_4.JPG" alt="공동현관 비밀번호 키" class="step-image">
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">4</div>
+                        <div class="step-description"><span class="highlight">비밀번호를 누르고</span> 안으로 들어가세요.</div>
+                    </div>
+                </div>
+                
+                <div class="guide-step">
+                    <div class="step-image-container">
+                        <img src="guide_5.JPG" alt="엘레베이터" class="step-image">
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">5</div>
+                        <div class="step-description"><span class="highlight">엘레베이터를 타고 6층</span>으로 올라가세요.</div>
+                    </div>
+                </div>
+                
+                <div class="guide-step">
+                    <div class="step-image-container">
+                        <img src="guide_6.JPG" alt="엘레베이터 내리면 보이는 건물내부" class="step-image">
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">6</div>
+                        <div class="step-description">엘레베이터에서 내리면 이렇게 보입니다.</div>
+                    </div>
+                </div>
+                
+                <div class="guide-step">
+                    <div class="step-image-container">
+                        <img src="guide_7.JPG" alt="복도 모습" class="step-image">
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">7</div>
+                        <div class="step-description"><span class="highlight">왼쪽으로 가보세요.</span> 이런 복도가 보입니다.</div>
+                    </div>
+                </div>
+                
+                <div class="guide-step">
+                    <div class="step-image-container">
+                        <img src="guide_8.JPG" alt="다시 올라갈 건물 모습" class="step-image">
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">8</div>
+                        <div class="step-description">이 건물을 따라 올라가세요.</div>
+                    </div>
+                </div>
+                
+                <div class="guide-step">
+                    <div class="step-image-container">
+                        <img src="guide_9.JPG" alt="계단 모습" class="step-image">
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">9</div>
+                        <div class="step-description">계단을 따라 <span class="highlight">한 층 더 올라가세요.</span></div>
+                    </div>
+                </div>
+                
+                <div class="guide-step">
+                    <div class="step-image-container">
+                        <img src="guide_10.JPG" alt="728호 문" class="step-image">
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">10</div>
+                        <div class="step-description">도착했습니다! <span class="highlight">728호</span>가 여러분의 숙소입니다.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-card" style="margin-top: 20px;">
+                <div class="card-header">
+                    <div class="card-icon">🔑</div>
+                    <div class="card-title">비밀번호 안내</div>
+                </div>
+                <div class="card-content">
+                    <p class="important">⚠️ 공동현관 비밀번호와 숙소 비밀번호는 입실 당일 아침에 알려드립니다.</p>
+                </div>
+            </div>
+        </div>
+        
         <!-- 퇴실 체크리스트 탭 내용 -->
         <div id="checkout" class="tab-content">
             <div class="info-cards">
@@ -473,7 +592,7 @@
                     </div>
                     <div class="card-content">
                         <p>숙소에서의 경험이 어떠셨나요? 개선할 점이나 좋았던 점을 알려주시면 더 나은 서비스를 제공하는데 큰 도움이 됩니다.</p>
-                        <p>리브애니웨어에 <span class="highlight">후기를 남겨주시면</span> 정말 감사하겠습니다! 💕</p>
+                        <p>에어비앤비에 <span class="highlight">후기를 남겨주시면</span> 정말 감사하겠습니다! 💕</p>
                     </div>
                 </div>
             </div>
@@ -506,7 +625,13 @@
             
             // 클릭한 탭 버튼 찾기
             for (var i = 0; i < tabs.length; i++) {
-                if (tabs[i].textContent.trim().includes(tabId === "info" ? "숙소 안내사항" : "퇴실 체크리스트")) {
+                if (tabId === "info" && tabs[i].textContent.trim().includes("숙소 안내사항")) {
+                    tabs[i].classList.add("active");
+                    break;
+                } else if (tabId === "directions" && tabs[i].textContent.trim().includes("오시는 길")) {
+                    tabs[i].classList.add("active");
+                    break;
+                } else if (tabId === "checkout" && tabs[i].textContent.trim().includes("퇴실 체크리스트")) {
                     tabs[i].classList.add("active");
                     break;
                 }
