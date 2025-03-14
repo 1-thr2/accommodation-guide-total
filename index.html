@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>728호 숙소 정보</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        :root {
+            --primary-color: #3182F6;
+            --secondary-color: #F4F6FF;
+            --highlight-color: #3182F6;
+            --text-color: #191F28;
+            --sub-text-color: #8B95A1;
+            --border-radius: 20px;
+            --box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+        }
+        
+        body {
+            background-color: #F8F9FA;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+        
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+        
+        header {
+            text-align: center;
+            margin: 24px 0 20px;
+            padding: 0 16px;
+        }
+        
+        h1 {
+            color: var(--text-color);
+            font-size: 2rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            word-break: keep-all;
+        }
+        
+        .subtitle {
+            color: var(--sub-text-color);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        
+        /* 탭 스타일 */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 16px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            color: var(--sub-text-color);
+            position: relative;
+        }
+        
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .tab-icon {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* 카드 스타일 */
+        .info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .info-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .card-header {
+            background-color: var(--secondary-color);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #E9ECEF;
+        }
+        
+        .card-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            margin-right: 16px;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-content p {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        
+        .card-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight {
+            color: var(--highlight-color);
+            font-weight: 500;
+        }
+        
+        .important {
+            color: #E03131;
+            font-weight: 500;
+        }
+        
+        .card-tip {
+            background-color: #FFF9DB;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-top: 12px;
+            font-size: 0.95rem;
+        }
+        
+        .card-tip::before {
+            content: "💡 팁";
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .image-container {
+            margin-top: 16px;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #F2F4F6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+        
+        .info-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+        }
+        
+        .footer {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            margin-top: 40px;
+        }
+        
+        .footer-title {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #F1F3F5;
+        }
+        
+        .checklist-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 2px solid #CED4DA;
+            margin-right: 12px;
+            flex-shrink: 0;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .checkbox.checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .checkbox.checked::after {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .checklist-text {
+            flex: 1;
+            padding-top: 3px;
+        }
+        
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            .card-header {
+                padding: 14px 16px;
+            }
+            
+            .card-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 1rem;
+            }
+            
+            .card-title {
+                font-size: 1rem;
+            }
+            
+            .card-content {
+                padding: 16px;
+            }
+            
+            .card-content p {
+                font-size: 0.95rem;
+            }
+            
+            .tab {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>728호 숙소 정보</h1>
+            <p class="subtitle">편안한 숙박을 위한 안내사항입니다 😊</p>
+        </header>
+        
+        <!-- 탭 메뉴 -->
+        <div class="tabs">
+            <div class="tab active" onclick="openTab('info')">
+                <span class="tab-icon">📋</span>
+                숙소 안내사항
+            </div>
+            <div class="tab" onclick="openTab('checkout')">
+                <span class="tab-icon">✅</span>
+                퇴실 체크리스트
+            </div>
+        </div>
+        
+        <!-- 안내사항 탭 내용 -->
+        <div id="info" class="tab-content active">
+            <div class="info-cards">
+                <!-- 체크인/체크아웃 정보 -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="card-icon">🕒</div>
+                        <div class="card-title">체크인/체크아웃 안내</div>
+                    </div>
+                    <div class="card-content">
+                        <p>• <span class="highlight">체크인 시간</span>: 오전 10시부터 가능합니다.</p>
+                        <p>• <span class="highlight">체크아웃 시간</span>: 오후 3시까지 부탁드립니다.</p>
+                        <p>• 시간 조정이 필요하신 경우 미리 메시지로 문의해주세요.</p>
+                    </div>
+                </div>
+                
+                <!-- 와이파이 정보 -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="card-icon">📶</div>
+                        <div class="card-title">와이파이 정보</div>
+                    </div>
+                    <div class="card-content">
+                        <p>• 와이파이 정보는 <span class="highlight">TV 뒤 공유기</span>에서 확인하실 수 있습니다.</p>
+                        <p>• 연결에 문제가 있으시면 공유기 전원을 잠시 껐다 켜보세요.</p>
+                        <p>• 그래도 연결이 안 되면 언제든지 문의주세요!</p>
+                    </div>
+                </div>
+                
+                <!-- 쓰레기 배출 -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="card-icon">🗑️</div>
+                        <div class="card-title">쓰레기 배출 안내</div>
+                    </div>
+                    <div class="card-content">
+                        <p>• 쓰레기는 <span class="highlight">6층 쓰레기 배출 장소</span>에 버려주세요.</p>
+                        <p>• 일반쓰레기, 음식물쓰레기, 재활용품을 꼭 분리해서 버려주세요.</p>
+                        <p>• 비닐봉지에 잘 묶어서 배출해주시면 감사하겠습니다.</p>
+                        
+                        <div class="image-container">
+                            <img src="image_1.JPG" alt="6층 쓰레기 배출 장소" class="info-image">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 주차 안내 -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="card-icon">🚗</div>
+                        <div class="card-title">주차 안내</div>
+                    </div>
+                    <div class="card-content">
+                        <p>• 안타깝게도 <span class="important">무료 주차는 지원되지 않습니다.</span></p>
+                        <p>• 1층에 있는 주차장은 공용주차장으로 요금이 부과됩니다.</p>
+                        
+                        <div class="card-tip">
+                            오후 8시 이후에는 주차 요금이 부과되지 않으니 저녁에 잠깐 주차하실 경우 참고하세요!
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 주변 편의시설 -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="card-icon">🏪</div>
+                        <div class="card-title">주변 편의시설</div>
+                    </div>
+                    <div class="card-content">
+                        <p>• <span class="highlight">편의점</span>: 건물 바로 앞 CU 편의점 (도보 1분)</p>
+                        <p>• <span class="highlight">마트</span>: 남포역 3번 출구 롯데마트 (도보 5분)</p>
+                        <p>• <span class="highlight">카페</span>: 건물 옆 커피빈 (도보 1분)</p>
+                        <p>• <span class="highlight">식당</span>: 남포동 먹자골목 (도보 7분)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 퇴실 체크리스트 탭 내용 -->
+        <div id="checkout" class="tab-content">
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="card-icon">📝</div>
+                        <div class="card-title">퇴실 전에 확인해주세요</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                <span class="highlight">창문 닫기</span> - 모든 창문이 잘 닫혀있는지 확인해 주세요.
+                            </div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                <span class="highlight">에어컨/히터 끄기</span> - 모든 전자제품의 전원이 꺼져있는지 확인해 주세요.
+                            </div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                <span class="highlight">쓰레기 버리기</span> - 모든 쓰레기는 6층 쓰레기장에 분리수거해 주세요.
+                            </div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                <span class="highlight">냉장고 비우기</span> - 냉장고 속 음식물을 모두 가져가시거나 처분해 주세요.
+                            </div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                <span class="highlight">소지품 확인</span> - 중요한 개인 소지품을 놓고 가지 않았는지 확인해 주세요.
+                            </div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">
+                                <span class="highlight">문 잠그기</span> - 퇴실 시 문이 잘 잠겼는지 꼭 확인해 주세요.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="card-icon">💬</div>
+                        <div class="card-title">후기 남기기</div>
+                    </div>
+                    <div class="card-content">
+                        <p>숙소에서의 경험이 어떠셨나요? 개선할 점이나 좋았던 점을 알려주시면 더 나은 서비스를 제공하는데 큰 도움이 됩니다.</p>
+                        <p>에어비앤비에 <span class="highlight">후기를 남겨주시면</span> 정말 감사하겠습니다! 💕</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <span class="emoji">📱</span>
+            <div class="footer-title">궁금한 점이 있으신가요?</div>
+            <p>편하게 메시지로 문의해 주세요. 항상 도와드릴 준비가 되어 있습니다!</p>
+        </div>
+    </div>
+    
+    <script>
+        // 탭 전환 함수
+        function openTab(tabId) {
+            // 모든 탭 컨텐츠 숨기기
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // 모든 탭 버튼 비활성화
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            
+            // 선택한 탭 컨텐츠와 버튼 활성화
+            document.getElementById(tabId).classList.add("active");
+            
+            // 클릭한 탭 버튼 찾기
+            for (var i = 0; i < tabs.length; i++) {
+                if (tabs[i].textContent.trim().includes(tabId === "info" ? "숙소 안내사항" : "퇴실 체크리스트")) {
+                    tabs[i].classList.add("active");
+                    break;
+                }
+            }
+        }
+        
+        // 체크박스 토글 함수
+        function toggleCheck(element) {
+            element.classList.toggle("checked");
+        }
+        
+        // 이미지가 로드되지 않았을 때 대체 텍스트 표시
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.info-image');
+            
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    const errorMsg = document.createElement('div');
+                    errorMsg.textContent = '이미지를 불러올 수 없어요 😢';
+                    errorMsg.style.padding = '20px';
+                    errorMsg.style.textAlign = 'center';
+                    errorMsg.style.color = '#8B95A1';
+                    errorMsg.style.display = 'flex';
+                    errorMsg.style.alignItems = 'center';
+                    errorMsg.style.justifyContent = 'center';
+                    errorMsg.style.fontWeight = '500';
+                    this.parentNode.appendChild(errorMsg);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
