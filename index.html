@@ -186,146 +186,59 @@
             display: block;
         }
         
-        /* 안내 단계 */
-        .steps {
-            margin-top: 24px;
+        /* 오시는 길 스타일 */
+        .directions-list {
+            margin-top: 20px;
         }
         
-        .step-group {
-            margin-bottom: 24px;
-            border: 1px solid var(--border-color);
+        .direction-step {
+            background-color: white;
             border-radius: var(--border-radius);
-            background-color: #FFFFFF;
+            margin-bottom: 16px;
             overflow: hidden;
+            border: 1px solid var(--border-color);
         }
         
-        .step-group-header {
-            display: flex;
-            align-items: center;
-            padding: 16px 20px;
-            cursor: pointer;
-            border-bottom: 1px solid transparent;
-        }
-        
-        .step-group-header.active {
-            border-bottom-color: var(--border-color);
-        }
-        
-        .step-number {
-            width: 28px;
-            height: 28px;
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
+        .direction-number {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
-        
-        .step-title {
-            flex: 1;
-            font-weight: 700;
-        }
-        
-        .step-toggle {
-            width: 24px;
-            height: 24px;
-            position: relative;
-            transition: transform 0.3s;
-        }
-        
-        .step-toggle::before,
-        .step-toggle::after {
-            content: '';
-            position: absolute;
-            background-color: var(--sub-text-color);
-            border-radius: 2px;
-        }
-        
-        .step-toggle::before {
-            width: 2px;
-            height: 12px;
-            top: 6px;
-            left: 11px;
-            transition: height 0.3s;
-        }
-        
-        .step-toggle::after {
-            width: 12px;
-            height: 2px;
-            top: 11px;
-            left: 6px;
-        }
-        
-        .step-group-header.active .step-toggle::before {
-            height: 0;
-        }
-        
-        .step-group-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        
-        .step-group-content.active {
-            max-height: 2000px;
-            transition: max-height 0.5s ease-in;
-        }
-        
-        .step-image-wrapper {
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 비율 유지 */
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .step-main-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .step-detail {
-            padding: 16px 20px;
-        }
-        
-        .step-detail-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 12px;
-        }
-        
-        .step-item {
-            display: flex;
-            align-items: flex-start;
-            padding: 8px 0;
-        }
-        
-        .step-item-number {
             width: 24px;
             height: 24px;
             background-color: var(--primary-light);
             color: var(--primary-color);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
             font-weight: 700;
-            margin-right: 12px;
-            flex-shrink: 0;
+            margin-right: 8px;
+            font-size: 0.9rem;
         }
         
-        .step-item-text {
-            flex: 1;
-            font-size: 0.95rem;
+        .direction-header {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 500;
+        }
+        
+        .direction-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 300px;
+            object-fit: contain;
+        }
+        
+        .direction-content {
+            padding: 16px;
+        }
+        
+        .direction-text {
+            color: var(--text-color);
+            margin-bottom: 4px;
+        }
+        
+        .direction-highlight {
+            color: var(--primary-color);
+            font-weight: 500;
         }
         
         /* 중요 알림 */
@@ -464,60 +377,20 @@
             font-size: 0.95rem;
         }
         
-        /* 모달 스타일 */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1001;
-            overflow: auto;
-        }
-        
-        .modal-content {
-            position: relative;
-            margin: 50px auto;
-            width: 90%;
-            max-width: 600px;
+        /* 하단 호스트 문의 */
+        .host-contact {
             background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
-            animation: modalOpen 0.3s ease;
-        }
-        
-        @keyframes modalOpen {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .modal-header {
-            padding: 16px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .modal-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-        
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--sub-text-color);
-        }
-        
-        .modal-body {
+            border-radius: var(--border-radius);
             padding: 20px;
-            max-height: 70vh;
-            overflow-y: auto;
+            margin-top: 32px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .host-contact-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
         
         /* 반응형 스타일 */
@@ -537,10 +410,6 @@
             
             .card-content {
                 padding: 16px;
-            }
-            
-            .step-detail {
-                padding: 12px 16px;
             }
             
             .btn {
@@ -640,8 +509,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <a href="https://www.liveanywhere.me/" class="btn btn-arrow">호스트에게 문의하기</a>
                 </div>
             </div>
             
@@ -687,6 +554,13 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- 호스트 문의 -->
+            <div class="host-contact">
+                <div class="host-contact-title">궁금한 점이 있으신가요?</div>
+                <p>언제든지 편하게 문의해 주세요!</p>
+                <a href="https://www.liveanywhere.me/" class="btn btn-arrow">호스트에게 문의하기</a>
+            </div>
         </div>
         
         <!-- 오시는 길 탭 -->
@@ -696,117 +570,104 @@
                 <span>공동현관 비밀번호와 숙소 비밀번호는 입실 당일 아침에 알려드립니다.</span>
             </div>
             
-            <div class="steps">
-                <!-- 그룹 1: 지하철에서 나와서 건물 찾기 -->
-                <div class="step-group">
-                    <div class="step-group-header active" onclick="toggleStepGroup(this)">
-                        <div class="step-number">1</div>
-                        <div class="step-title">지하철에서 나와서 건물 찾기</div>
-                        <div class="step-toggle"></div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">남포역에서 숙소까지 오는 방법</div>
+                    <div class="card-subtitle">사진과 함께 자세히 안내해 드립니다</div>
+                </div>
+            </div>
+            
+            <div class="directions-list">
+                <!-- 1단계 -->
+                <div class="direction-step">
+                    <div class="direction-header">
+                        <span class="direction-number">1</span> 남포역 7번 출구에서 나오세요.
                     </div>
-                    <div class="step-group-content active">
-                        <div class="step-image-wrapper">
-                            <img src="guide_1.JPG" alt="남포역 7번 출구" class="step-main-image" loading="lazy">
-                        </div>
-                        <div class="step-detail">
-                            <p>남포역에서 숙소 건물까지 오는 방법이에요.</p>
-                            
-                            <div class="step-detail-list">
-                                <div class="step-item">
-                                    <div class="step-item-number">1</div>
-                                    <div class="step-item-text"><span style="color: var(--primary-color); font-weight: 500;">남포역 7번 출구</span>에서 나오세요.</div>
-                                </div>
-                                
-                                <div class="step-item">
-                                    <div class="step-item-number">2</div>
-                                    <div class="step-item-text">나와서 고개를 <span style="color: var(--primary-color); font-weight: 500;">우측으로 돌리면</span> 커피빈이 보이고, 그 옆에 보이는 건물입니다.</div>
-                                </div>
-                                
-                                <div class="step-item">
-                                    <div class="step-item-number">3</div>
-                                    <div class="step-item-text">건물 입구로 가까이 오세요.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <img src="guide_1.JPG" alt="남포역 7번 출구" class="direction-image" loading="lazy">
                 </div>
                 
-                <!-- 그룹 2: 건물 내부로 들어가기 -->
-                <div class="step-group">
-                    <div class="step-group-header" onclick="toggleStepGroup(this)">
-                        <div class="step-number">2</div>
-                        <div class="step-title">건물 내부로 들어가기</div>
-                        <div class="step-toggle"></div>
+                <!-- 2단계 -->
+                <div class="direction-step">
+                    <div class="direction-header">
+                        <span class="direction-number">2</span> 나와서 고개를 우측으로 돌리면 커피빈이 보이고, 그 옆에 보이는 건물입니다.
                     </div>
-                    <div class="step-group-content">
-                        <div class="step-image-wrapper">
-                            <img src="guide_4.JPG" alt="공동현관 비밀번호 키" class="step-main-image" loading="lazy">
-                        </div>
-                        <div class="step-detail">
-                            <p>건물 입구에서 숙소가 있는 층까지 이동하세요.</p>
-                            
-                            <div class="step-detail-list">
-                                <div class="step-item">
-                                    <div class="step-item-number">4</div>
-                                    <div class="step-item-text"><span style="color: var(--primary-color); font-weight: 500;">비밀번호를 누르고</span> 안으로 들어가세요.</div>
-                                </div>
-                                
-                                <div class="step-item">
-                                    <div class="step-item-number">5</div>
-                                    <div class="step-item-text"><span style="color: var(--primary-color); font-weight: 500;">엘레베이터를 타고 6층</span>으로 올라가세요.</div>
-                                </div>
-                                
-                                <div class="step-item">
-                                    <div class="step-item-number">6</div>
-                                    <div class="step-item-text">엘레베이터에서 내리면 이렇게 보입니다.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <img src="guide_2.JPG" alt="건물 전경" class="direction-image" loading="lazy">
                 </div>
                 
-                <!-- 그룹 3: 숙소 찾아가기 -->
-                <div class="step-group">
-                    <div class="step-group-header" onclick="toggleStepGroup(this)">
-                        <div class="step-number">3</div>
-                        <div class="step-title">숙소 찾아가기</div>
-                        <div class="step-toggle"></div>
+                <!-- 3단계 -->
+                <div class="direction-step">
+                    <div class="direction-header">
+                        <span class="direction-number">3</span> 건물 입구로 가까이 오세요.
                     </div>
-                    <div class="step-group-content">
-                        <div class="step-image-wrapper">
-                            <img src="guide_10.JPG" alt="728호 문" class="step-main-image" loading="lazy">
-                        </div>
-                        <div class="step-detail">
-                            <p>6층에서 728호까지 이동하세요.</p>
-                            
-                            <div class="step-detail-list">
-                                <div class="step-item">
-                                    <div class="step-item-number">7</div>
-                                    <div class="step-item-text"><span style="color: var(--primary-color); font-weight: 500;">왼쪽으로 가보세요.</span> 이런 복도가 보입니다.</div>
-                                </div>
-                                
-                                <div class="step-item">
-                                    <div class="step-item-number">8</div>
-                                    <div class="step-item-text">이 건물을 따라 올라가세요.</div>
-                                </div>
-                                
-                                <div class="step-item">
-                                    <div class="step-item-number">9</div>
-                                    <div class="step-item-text">계단을 따라 <span style="color: var(--primary-color); font-weight: 500;">한 층 더 올라가세요.</span></div>
-                                </div>
-                                
-                                <div class="step-item">
-                                    <div class="step-item-number">10</div>
-                                    <div class="step-item-text">도착했습니다! <span style="color: var(--primary-color); font-weight: 500;">728호</span>가 여러분의 숙소입니다.</div>
-                                </div>
-                            </div>
-                        </div>
+                    <img src="guide_3.JPG" alt="건물 가까운 전경" class="direction-image" loading="lazy">
+                </div>
+                
+                <!-- 4단계 -->
+                <div class="direction-step">
+                    <div class="direction-header">
+                        <span class="direction-number">4</span> 비밀번호를 누르고 안으로 들어가세요.
+                    </div>
+                    <img src="guide_4.JPG" alt="공동현관 비밀번호 키" class="direction-image" loading="lazy">
+                </div>
+                
+                <!-- 5단계 -->
+                <div class="direction-step">
+                    <div class="direction-header">
+                        <span class="direction-number">5</span> 엘레베이터를 타고 6층으로 올라가세요.
+                    </div>
+                    <img src="guide_5.JPG" alt="엘레베이터" class="direction-image" loading="lazy">
+                </div>
+                
+                <!-- 6단계 -->
+                <div class="direction-step">
+                    <div class="direction-header">
+                        <span class="direction-number">6</span> 엘레베이터에서 내리면 이렇게 보입니다.
+                    </div>
+                    <img src="guide_6.JPG" alt="엘레베이터 내리면 보이는 건물내부" class="direction-image" loading="lazy">
+                </div>
+                
+                <!-- 7단계 -->
+                <div class="direction-step">
+                    <div class="direction-header">
+                        <span class="direction-number">7</span> 왼쪽으로 가보세요. 이런 복도가 보입니다.
+                    </div>
+                    <img src="guide_7.JPG" alt="복도 모습" class="direction-image" loading="lazy">
+                </div>
+                
+                <!-- 8단계 -->
+                <div class="direction-step">
+                    <div class="direction-header">
+                        <span class="direction-number">8</span> 이 건물을 따라 올라가세요.
+                    </div>
+                    <img src="guide_8.JPG" alt="다시 올라갈 건물 모습" class="direction-image" loading="lazy">
+                </div>
+                
+                <!-- 9단계 -->
+                <div class="direction-step">
+                    <div class="direction-header">
+                        <span class="direction-number">9</span> 계단을 따라 한 층 더 올라가세요.
+                    </div>
+                    <img src="guide_9.JPG" alt="계단 모습" class="direction-image" loading="lazy">
+                </div>
+                
+                <!-- 10단계 -->
+                <div class="direction-step">
+                    <div class="direction-header">
+                        <span class="direction-number">10</span> 도착했습니다! 728호가 여러분의 숙소입니다.
+                    </div>
+                    <img src="guide_10.JPG" alt="728호 문" class="direction-image" loading="lazy">
+                    <div class="direction-content">
+                        <div class="direction-text">찾아오시느라 수고하셨습니다! 편안한 휴식 되세요 😊</div>
                     </div>
                 </div>
             </div>
             
-            <button class="btn btn-arrow" onclick="openModal('allSteps')">모든 단계 한 번에 보기</button>
-            <a href="https://www.liveanywhere.me/" class="btn-text btn-arrow">길을 찾기 어려우면 호스트에게 문의하기</a>
+            <!-- 호스트 문의 -->
+            <div class="host-contact">
+                <div class="host-contact-title">길을 찾기 어려우신가요?</div>
+                <p>언제든지 호스트에게 연락주세요!</p>
+                <a href="https://www.liveanywhere.me/" class="btn btn-arrow">호스트에게 문의하기</a>
+            </div>
         </div>
         
         <!-- 퇴실 체크리스트 탭 -->
@@ -874,100 +735,14 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <a href="https://www.liveanywhere.me/" class="btn btn-arrow">후기 남기러 가기</a>
                 </div>
             </div>
-        </div>
-        
-        <!-- 모든 단계 보기 모달 -->
-        <div id="allStepsModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title">전체 오시는 길 안내</div>
-                    <button class="modal-close" onclick="closeModal('allSteps')">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="step-item" style="margin-bottom: 16px;">
-                        <div class="step-item-number">1</div>
-                        <div class="step-item-text">
-                            <b>남포역 7번 출구</b>에서 나오세요.
-                            <img src="guide_1.JPG" alt="남포역 7번 출구" style="width: 100%; margin-top: 8px; border-radius: 8px;" loading="lazy">
-                        </div>
-                    </div>
-                    
-                    <div class="step-item" style="margin-bottom: 16px;">
-                        <div class="step-item-number">2</div>
-                        <div class="step-item-text">
-                            나와서 고개를 <b>우측으로 돌리면</b> 커피빈이 보이고, 그 옆에 보이는 건물입니다.
-                            <img src="guide_2.JPG" alt="건물 전경" style="width: 100%; margin-top: 8px; border-radius: 8px;" loading="lazy">
-                        </div>
-                    </div>
-                    
-                    <div class="step-item" style="margin-bottom: 16px;">
-                        <div class="step-item-number">3</div>
-                        <div class="step-item-text">
-                            건물 입구로 가까이 오세요.
-                            <img src="guide_3.JPG" alt="건물 가까운 전경" style="width: 100%; margin-top: 8px; border-radius: 8px;" loading="lazy">
-                        </div>
-                    </div>
-                    
-                    <div class="step-item" style="margin-bottom: 16px;">
-                        <div class="step-item-number">4</div>
-                        <div class="step-item-text">
-                            <b>비밀번호를 누르고</b> 안으로 들어가세요.
-                            <img src="guide_4.JPG" alt="공동현관 비밀번호 키" style="width: 100%; margin-top: 8px; border-radius: 8px;" loading="lazy">
-                        </div>
-                    </div>
-                    
-                    <div class="step-item" style="margin-bottom: 16px;">
-                        <div class="step-item-number">5</div>
-                        <div class="step-item-text">
-                            <b>엘레베이터를 타고 6층</b>으로 올라가세요.
-                            <img src="guide_5.JPG" alt="엘레베이터" style="width: 100%; margin-top: 8px; border-radius: 8px;" loading="lazy">
-                        </div>
-                    </div>
-                    
-                    <div class="step-item" style="margin-bottom: 16px;">
-                        <div class="step-item-number">6</div>
-                        <div class="step-item-text">
-                            엘레베이터에서 내리면 이렇게 보입니다.
-                            <img src="guide_6.JPG" alt="엘레베이터 내리면 보이는 건물내부" style="width: 100%; margin-top: 8px; border-radius: 8px;" loading="lazy">
-                        </div>
-                    </div>
-                    
-                    <div class="step-item" style="margin-bottom: 16px;">
-                        <div class="step-item-number">7</div>
-                        <div class="step-item-text">
-                            <b>왼쪽으로 가보세요.</b> 이런 복도가 보입니다.
-                            <img src="guide_7.JPG" alt="복도 모습" style="width: 100%; margin-top: 8px; border-radius: 8px;" loading="lazy">
-                        </div>
-                    </div>
-                    
-                    <div class="step-item" style="margin-bottom: 16px;">
-                        <div class="step-item-number">8</div>
-                        <div class="step-item-text">
-                            이 건물을 따라 올라가세요.
-                            <img src="guide_8.JPG" alt="다시 올라갈 건물 모습" style="width: 100%; margin-top: 8px; border-radius: 8px;" loading="lazy">
-                        </div>
-                    </div>
-                    
-                    <div class="step-item" style="margin-bottom: 16px;">
-                        <div class="step-item-number">9</div>
-                        <div class="step-item-text">
-                            계단을 따라 <b>한 층 더 올라가세요.</b>
-                            <img src="guide_9.JPG" alt="계단 모습" style="width: 100%; margin-top: 8px; border-radius: 8px;" loading="lazy">
-                        </div>
-                    </div>
-                    
-                    <div class="step-item">
-                        <div class="step-item-number">10</div>
-                        <div class="step-item-text">
-                            도착했습니다! <b>728호</b>가 여러분의 숙소입니다.
-                            <img src="guide_10.JPG" alt="728호 문" style="width: 100%; margin-top: 8px; border-radius: 8px;" loading="lazy">
-                        </div>
-                    </div>
-                </div>
+            
+            <!-- 호스트 문의 -->
+            <div class="host-contact">
+                <div class="host-contact-title">즐거운 여행 되셨나요?</div>
+                <p>소중한 후기를 남겨주시면 큰 도움이 됩니다 💕</p>
+                <a href="https://www.liveanywhere.me/" class="btn btn-arrow">후기 남기러 가기</a>
             </div>
         </div>
     </div>
@@ -1005,34 +780,6 @@
             element.setAttribute("aria-checked", isChecked);
         }
         
-        // 오시는 길 단계 그룹 토글 함수
-        function toggleStepGroup(header) {
-            header.classList.toggle("active");
-            const content = header.nextElementSibling;
-            
-            if (content.classList.contains("active")) {
-                content.classList.remove("active");
-            } else {
-                content.classList.add("active");
-            }
-        }
-        
-        // 모달 열기
-        function openModal(type) {
-            if (type === 'allSteps') {
-                document.getElementById('allStepsModal').style.display = 'block';
-            }
-            document.body.style.overflow = 'hidden';
-        }
-        
-        // 모달 닫기
-        function closeModal(type) {
-            if (type === 'allSteps') {
-                document.getElementById('allStepsModal').style.display = 'none';
-            }
-            document.body.style.overflow = 'auto';
-        }
-        
         // 초기화 함수
         document.addEventListener('DOMContentLoaded', function() {
             // 이미지 지연 로딩 설정
@@ -1049,22 +796,6 @@
                     errorMsg.style.borderRadius = '8px';
                     this.parentNode.appendChild(errorMsg);
                 });
-            });
-            
-            // 모달 바깥 클릭 시 닫기
-            window.onclick = function(event) {
-                if (event.target === document.getElementById('allStepsModal')) {
-                    closeModal('allSteps');
-                }
-            };
-            
-            // ESC 키로 모달 닫기
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape') {
-                    if (document.getElementById('allStepsModal').style.display === 'block') {
-                        closeModal('allSteps');
-                    }
-                }
             });
         });
     </script>
