@@ -605,11 +605,18 @@
         <!-- 탭 메뉴 -->
         <div class="tabs-container">
             <div class="tabs" role="tablist" aria-label="숙소 정보 탭">
-                <div id="tab-directions" class="tab active" onclick="openTab('directions')" role="tab" aria-selected="true" aria-controls="directions" tabindex="0" onkeydown="handleTabKeydown(event, 'directions')">오시는 길</div>
-                <div id="tab-info" class="tab" onclick="openTab('info')" role="tab" aria-selected="false" aria-controls="info" tabindex="0" onkeydown="handleTabKeydown(event, 'info')">숙소 안내사항</div>
-                <div id="tab-checkout" class="tab" onclick="openTab('checkout')" role="tab" aria-selected="false" aria-controls="checkout" tabindex="0" onkeydown="handleTabKeydown(event, 'checkout')">퇴실 체크리스트</div>
+                <div id="tab-directions" class="tab active" data-tab="directions" role="tab" aria-selected="true" aria-controls="directions" tabindex="0">오시는 길</div>
+                <div id="tab-info" class="tab" data-tab="info" role="tab" aria-selected="false" aria-controls="info" tabindex="0">숙소 안내사항</div>
+                <div id="tab-checkout" class="tab" data-tab="checkout" role="tab" aria-selected="false" aria-controls="checkout" tabindex="0">퇴실 체크리스트</div>
             </div>
         </div>
+        
+        <script>
+            // 페이지 로드 시 변수 정의 - 탭 관련 문제 해결
+            document.addEventListener('DOMContentLoaded', function() {
+                window.tabsInitialized = false;
+            });
+        </script>
         
         <!-- 숙소 안내사항 탭 -->
         <div id="info" class="tab-content" role="tabpanel" aria-labelledby="tab-info" tabindex="0">
