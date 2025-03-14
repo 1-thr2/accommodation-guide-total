@@ -173,6 +173,19 @@
             font-size: 0.95rem;
         }
         
+        /* 이미지 컨테이너 */
+        .image-container {
+            margin-top: 16px;
+            background-color: #F2F4F6;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .info-image {
+            width: 100%;
+            display: block;
+        }
+        
         /* 안내 단계 */
         .steps {
             margin-top: 24px;
@@ -262,9 +275,19 @@
             transition: max-height 0.5s ease-in;
         }
         
-        .step-main-image {
+        .step-image-wrapper {
             width: 100%;
-            max-height: 200px;
+            padding-top: 56.25%; /* 16:9 비율 유지 */
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-main-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
         
@@ -602,6 +625,9 @@
                             <div class="info-text">
                                 <div class="info-label">쓰레기 배출</div>
                                 <div class="info-value">6층 쓰레기 배출 장소에 일반/음식물/재활용으로 분리해주세요</div>
+                                <div class="image-container">
+                                    <img src="image_1.JPG" alt="6층 쓰레기 배출 장소" class="info-image" loading="lazy">
+                                </div>
                             </div>
                         </div>
                         
@@ -659,8 +685,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <button class="btn-text btn-arrow" onclick="openModal('map')">지도에서 위치 확인하기</button>
                 </div>
             </div>
         </div>
@@ -681,7 +705,9 @@
                         <div class="step-toggle"></div>
                     </div>
                     <div class="step-group-content active">
-                        <img src="guide_1.JPG" alt="남포역 7번 출구" class="step-main-image" loading="lazy">
+                        <div class="step-image-wrapper">
+                            <img src="guide_1.JPG" alt="남포역 7번 출구" class="step-main-image" loading="lazy">
+                        </div>
                         <div class="step-detail">
                             <p>남포역에서 숙소 건물까지 오는 방법이에요.</p>
                             
@@ -713,7 +739,9 @@
                         <div class="step-toggle"></div>
                     </div>
                     <div class="step-group-content">
-                        <img src="guide_4.JPG" alt="공동현관 비밀번호 키" class="step-main-image" loading="lazy">
+                        <div class="step-image-wrapper">
+                            <img src="guide_4.JPG" alt="공동현관 비밀번호 키" class="step-main-image" loading="lazy">
+                        </div>
                         <div class="step-detail">
                             <p>건물 입구에서 숙소가 있는 층까지 이동하세요.</p>
                             
@@ -745,7 +773,9 @@
                         <div class="step-toggle"></div>
                     </div>
                     <div class="step-group-content">
-                        <img src="guide_10.JPG" alt="728호 문" class="step-main-image" loading="lazy">
+                        <div class="step-image-wrapper">
+                            <img src="guide_10.JPG" alt="728호 문" class="step-main-image" loading="lazy">
+                        </div>
                         <div class="step-detail">
                             <p>6층에서 728호까지 이동하세요.</p>
                             
@@ -846,32 +876,6 @@
                     </div>
                     
                     <a href="https://www.liveanywhere.me/" class="btn btn-arrow">후기 남기러 가기</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 지도 모달 -->
-        <div id="mapModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title">숙소 주변 위치</div>
-                    <button class="modal-close" onclick="closeModal('map')">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div style="width: 100%; height: 300px; background-color: #f0f4fe; display: flex; align-items: center; justify-content: center;">
-                        <!-- 여기에 실제 지도가 들어갈 예정입니다 -->
-                        <p style="text-align: center; color: #8B95A1;">지도 이미지가 표시됩니다.<br>(실제 구현 시 Google Maps, Kakao Maps 등 연동)</p>
-                    </div>
-                    
-                    <div style="margin-top: 16px;">
-                        <h3 style="font-size: 1rem; margin-bottom: 8px;">주요 위치</h3>
-                        <ul style="padding-left: 20px; font-size: 0.95rem; color: var(--sub-text-color);">
-                            <li>CU 편의점 - 도보 1분</li>
-                            <li>커피빈 - 도보 1분</li>
-                            <li>롯데마트 - 도보 5분</li>
-                            <li>남포동 먹자골목 - 도보 7분</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1015,9 +1019,7 @@
         
         // 모달 열기
         function openModal(type) {
-            if (type === 'map') {
-                document.getElementById('mapModal').style.display = 'block';
-            } else if (type === 'allSteps') {
+            if (type === 'allSteps') {
                 document.getElementById('allStepsModal').style.display = 'block';
             }
             document.body.style.overflow = 'hidden';
@@ -1025,9 +1027,7 @@
         
         // 모달 닫기
         function closeModal(type) {
-            if (type === 'map') {
-                document.getElementById('mapModal').style.display = 'none';
-            } else if (type === 'allSteps') {
+            if (type === 'allSteps') {
                 document.getElementById('allStepsModal').style.display = 'none';
             }
             document.body.style.overflow = 'auto';
@@ -1053,9 +1053,6 @@
             
             // 모달 바깥 클릭 시 닫기
             window.onclick = function(event) {
-                if (event.target === document.getElementById('mapModal')) {
-                    closeModal('map');
-                }
                 if (event.target === document.getElementById('allStepsModal')) {
                     closeModal('allSteps');
                 }
@@ -1064,9 +1061,6 @@
             // ESC 키로 모달 닫기
             document.addEventListener('keydown', function(event) {
                 if (event.key === 'Escape') {
-                    if (document.getElementById('mapModal').style.display === 'block') {
-                        closeModal('map');
-                    }
                     if (document.getElementById('allStepsModal').style.display === 'block') {
                         closeModal('allSteps');
                     }
