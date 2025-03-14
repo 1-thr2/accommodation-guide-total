@@ -439,7 +439,6 @@
             transition: var(--transition);
             pointer-events: auto;
             margin: 0 auto;
-            width: auto;
             display: inline-flex;
         }
         
@@ -560,17 +559,11 @@
             <div class="tab" onclick="openTab('checkout')">퇴실 안내</div>
         </div>
         
-        <!-- 오시는 길 탭 -->
+        <!-- 오시는 길 탭 (원본 내용 유지) -->
         <div id="directions" class="tab-content active">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">🚶 부산 중구 중앙대로 21 부산데파트로 오는 방법</div>
-                </div>
-                <div class="card-content">
-                    <!-- 실제 주소 기반의 지도 길찾기 버튼 -->
-                    <button class="btn" onclick="window.open('https://map.kakao.com/link/to/부산데파트,35.1011,129.0347')">
-                        카카오맵에서 길찾기
-                    </button>
+                    <div class="card-title">🚶 남포역에서 숙소까지 오는 방법</div>
                 </div>
             </div>
             
@@ -578,16 +571,16 @@
             <div class="direction-step">
                 <div class="direction-header">
                     <div class="direction-number">1</div>
-                    <div class="direction-title">부산 중구 중앙대로 21 부산데파트 건물 입구를 찾으세요.</div>
+                    <div class="direction-title">남포역 7번 출구에서 나오세요.</div>
                 </div>
-                <img src="guide_1.JPG" alt="부산데파트 건물 입구" class="direction-image lazy-image" loading="lazy">
+                <img src="guide_1.JPG" alt="남포역 7번 출구" class="direction-image lazy-image" loading="lazy">
             </div>
             
             <!-- 2단계 -->
             <div class="direction-step">
                 <div class="direction-header">
                     <div class="direction-number">2</div>
-                    <div class="direction-title">건물 입구에서 지도를 확인하고 길을 따라 이동하세요.</div>
+                    <div class="direction-title">나와서 고개를 우측으로 돌리면 커피빈이 보이고, 그 옆에 보이는 건물입니다.</div>
                 </div>
                 <img src="guide_2.JPG" alt="건물 전경" class="direction-image lazy-image" loading="lazy">
             </div>
@@ -596,23 +589,83 @@
             <div class="direction-step">
                 <div class="direction-header">
                     <div class="direction-number">3</div>
-                    <div class="direction-title">엘리베이터 또는 계단을 이용해 숙소층으로 올라가세요.</div>
+                    <div class="direction-title">건물 입구로 가까이 오세요.</div>
                 </div>
-                <img src="guide_3.JPG" alt="엘리베이터/계단" class="direction-image lazy-image" loading="lazy">
+                <img src="guide_3.JPG" alt="건물 가까운 전경" class="direction-image lazy-image" loading="lazy">
             </div>
             
             <!-- 4단계 -->
             <div class="direction-step">
                 <div class="direction-header">
                     <div class="direction-number">4</div>
-                    <div class="direction-title">숙소 문을 찾아 입실하세요.</div>
+                    <div class="direction-title">비밀번호를 누르고 안으로 들어가세요.</div>
                 </div>
-                <img src="guide_4.JPG" alt="숙소 문" class="direction-image lazy-image" loading="lazy">
+                <img src="guide_4.JPG" alt="공동현관 비밀번호 키" class="direction-image lazy-image" loading="lazy">
             </div>
             
+            <!-- 5단계 -->
+            <div class="direction-step">
+                <div class="direction-header">
+                    <div class="direction-number">5</div>
+                    <div class="direction-title">엘리베이터를 타고 6층으로 올라가세요.</div>
+                </div>
+                <img src="guide_5.JPG" alt="엘리베이터" class="direction-image lazy-image" loading="lazy">
+            </div>
+            
+            <!-- 6단계 -->
+            <div class="direction-step">
+                <div class="direction-header">
+                    <div class="direction-number">6</div>
+                    <div class="direction-title">엘리베이터에서 내리면 이렇게 보입니다.</div>
+                </div>
+                <img src="guide_6.JPG" alt="엘리베이터 내리면 보이는 건물내부" class="direction-image lazy-image" loading="lazy">
+            </div>
+            
+            <!-- 7단계 -->
+            <div class="direction-step">
+                <div class="direction-header">
+                    <div class="direction-number">7</div>
+                    <div class="direction-title">왼쪽으로 가보세요. 이런 복도가 보입니다.</div>
+                </div>
+                <img src="guide_7.JPG" alt="복도 모습" class="direction-image lazy-image" loading="lazy">
+            </div>
+            
+            <!-- 8단계 -->
+            <div class="direction-step">
+                <div class="direction-header">
+                    <div class="direction-number">8</div>
+                    <div class="direction-title">이 건물을 따라 올라가세요.</div>
+                </div>
+                <img src="guide_8.JPG" alt="다시 올라갈 건물 모습" class="direction-image lazy-image" loading="lazy">
+            </div>
+            
+            <!-- 9단계 -->
+            <div class="direction-step">
+                <div class="direction-header">
+                    <div class="direction-number">9</div>
+                    <div class="direction-title">계단을 따라 한 층 더 올라가세요.</div>
+                </div>
+                <img src="guide_9.JPG" alt="계단 모습" class="direction-image lazy-image" loading="lazy">
+            </div>
+            
+            <!-- 10단계 -->
+            <div class="direction-step">
+                <div class="direction-header">
+                    <div class="direction-number">10</div>
+                    <div class="direction-title">도착했습니다! 728호가 여러분의 숙소입니다.</div>
+                </div>
+                <img src="guide_10.JPG" alt="728호 문" class="direction-image lazy-image" loading="lazy">
+            </div>
+            
+            <!-- 길찾기 완료 메시지 -->
             <div class="success-message">
                 🎉 길찾기 안내를 모두 읽으셨습니다! 즐거운 여행 되세요.
             </div>
+            
+            <!-- 카카오맵 버튼 (실제 주소 반영) -->
+            <button class="btn" onclick="window.open('https://map.kakao.com/link/to/부산데파트,35.1011,129.0347')">
+                카카오맵에서 길찾기
+            </button>
         </div>
         
         <!-- 숙소 정보 탭 -->
@@ -688,38 +741,6 @@
                     </p>
                 </div>
             </div>
-            
-            <!-- 기존 주변 편의시설 카드 -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">🏪 주변 편의시설</div>
-                </div>
-                <div class="card-content">
-                    <div class="info-item">
-                        <div class="info-icon">🏪</div>
-                        <div class="info-content">
-                            <div class="info-label">편의점</div>
-                            <div class="info-value">건물 바로 앞 CU 편의점 (도보 1분)</div>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon">🛒</div>
-                        <div class="info-content">
-                            <div class="info-label">마트</div>
-                            <div class="info-value">남포역 3번 출구 롯데마트 (도보 5분)</div>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon">☕</div>
-                        <div class="info-content">
-                            <div class="info-label">카페</div>
-                            <div class="info-value">건물 옆 커피빈 (도보 1분)</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         
         <!-- 퇴실 체크리스트 탭 -->
@@ -735,58 +756,35 @@
                     <div class="checklist">
                         <div class="checklist-item">
                             <div class="checkbox" onclick="toggleCheck(this)"></div>
-                            <div class="checklist-text">
-                                창문 닫기
-                            </div>
+                            <div class="checklist-text">창문 닫기</div>
                         </div>
-                        
                         <div class="checklist-item">
                             <div class="checkbox" onclick="toggleCheck(this)"></div>
-                            <div class="checklist-text">
-                                에어컨/히터 끄기
-                            </div>
+                            <div class="checklist-text">에어컨/히터 끄기</div>
                         </div>
-                        
                         <div class="checklist-item">
                             <div class="checkbox" onclick="toggleCheck(this)"></div>
-                            <div class="checklist-text">
-                                쓰레기 분리배출 (6층)
-                            </div>
+                            <div class="checklist-text">쓰레기 분리배출 (6층)</div>
                         </div>
-                        
                         <div class="checklist-item">
                             <div class="checkbox" onclick="toggleCheck(this)"></div>
-                            <div class="checklist-text">
-                                냉장고 비우기
-                            </div>
+                            <div class="checklist-text">냉장고 비우기</div>
                         </div>
-                        
                         <div class="checklist-item">
                             <div class="checkbox" onclick="toggleCheck(this)"></div>
-                            <div class="checklist-text">
-                                소지품 확인
-                            </div>
+                            <div class="checklist-text">소지품 확인</div>
                         </div>
-                        
                         <div class="checklist-item">
                             <div class="checkbox" onclick="toggleCheck(this)"></div>
-                            <div class="checklist-text">
-                                가스밸브 확인
-                            </div>
+                            <div class="checklist-text">가스밸브 확인</div>
                         </div>
-                        
                         <div class="checklist-item">
                             <div class="checkbox" onclick="toggleCheck(this)"></div>
-                            <div class="checklist-text">
-                                보일러 외출모드 설정
-                            </div>
+                            <div class="checklist-text">보일러 외출모드 설정</div>
                         </div>
-                        
                         <div class="checklist-item">
                             <div class="checkbox" onclick="toggleCheck(this)"></div>
-                            <div class="checklist-text">
-                                문 잠그기
-                            </div>
+                            <div class="checklist-text">문 잠그기</div>
                         </div>
                     </div>
                 </div>
@@ -817,39 +815,25 @@
     <script>
         // 탭 전환 함수
         function openTab(tabId) {
-            // 모든 탭 컨텐츠 숨기기
             document.querySelectorAll('.tab-content').forEach(function(content) {
                 content.classList.remove('active');
             });
-            
-            // 모든 탭 버튼 비활성화
             document.querySelectorAll('.tab').forEach(function(tab) {
                 tab.classList.remove('active');
             });
-            
-            // 선택한 탭 활성화
             document.getElementById(tabId).classList.add('active');
-            
-            // 해당 탭 버튼 찾아서 활성화
             document.querySelectorAll('.tab').forEach(function(tab) {
                 if(tab.getAttribute('onclick').includes(tabId)) {
                     tab.classList.add('active');
                 }
             });
-            
-            // 상태 저장 (현재 탭)
             localStorage.setItem('activeTab', tabId);
-            
-            // 탭 변경 시 스크롤 상단으로
             window.scrollTo(0, 0);
         }
         
         // 체크박스 토글 함수
         function toggleCheck(element) {
-            // 체크박스 상태 토글
             element.classList.toggle('checked');
-            
-            // 부모 항목에 체크 상태 적용
             const item = element.closest('.checklist-item');
             if (item) {
                 if (element.classList.contains('checked')) {
@@ -858,11 +842,7 @@
                     item.classList.remove('checked');
                 }
             }
-            
-            // 진행률 업데이트
             updateProgress();
-            
-            // 체크 상태 저장
             saveChecklistState();
         }
         
@@ -879,7 +859,6 @@
             if (savedState) {
                 const states = JSON.parse(savedState);
                 const checkboxes = document.querySelectorAll('.checkbox');
-                
                 checkboxes.forEach((checkbox, index) => {
                     if (states[index]) {
                         checkbox.classList.add('checked');
@@ -887,7 +866,6 @@
                         if (item) item.classList.add('checked');
                     }
                 });
-                
                 updateProgress();
             }
         }
@@ -897,18 +875,14 @@
             const total = document.querySelectorAll('.checkbox').length;
             const checked = document.querySelectorAll('.checkbox.checked').length;
             const progress = document.getElementById('checklistProgress');
-            
             if (progress) {
                 progress.textContent = `${checked}/${total} 완료`;
-                
-                // 모두 완료했을 때 축하 메시지 표시
                 if (checked === total && total > 0) {
                     if (!document.getElementById('completionMessage')) {
                         const message = document.createElement('div');
                         message.id = 'completionMessage';
                         message.className = 'success-message';
                         message.textContent = '🎉 모든 체크리스트를 완료했습니다!';
-                        
                         const card = document.querySelector('#checkout .card');
                         if (card) {
                             card.after(message);
@@ -927,7 +901,6 @@
         function savePage() {
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             const isAndroid = /Android/.test(navigator.userAgent);
-            
             if (isIOS) {
                 alert('iOS에서 저장하기: 화면 하단의 "공유" 버튼을 누른 후 "홈 화면에 추가"를 선택하세요.');
             } else if (isAndroid) {
@@ -940,7 +913,6 @@
         // 이미지 지연 로딩 처리
         function handleLazyImages() {
             const lazyImages = document.querySelectorAll('.lazy-image');
-            
             if ('IntersectionObserver' in window) {
                 const imageObserver = new IntersectionObserver((entries, observer) => {
                     entries.forEach(entry => {
@@ -951,12 +923,10 @@
                         }
                     });
                 });
-                
                 lazyImages.forEach(image => {
                     imageObserver.observe(image);
                 });
             } else {
-                // 폴백: 모든 이미지 즉시 표시
                 lazyImages.forEach(image => {
                     image.classList.add('loaded');
                 });
@@ -980,19 +950,12 @@
         
         // 페이지 로드 시 초기화
         document.addEventListener('DOMContentLoaded', function() {
-            // 저장된 탭 상태 로드
             const savedTab = localStorage.getItem('activeTab');
             if (savedTab) {
                 openTab(savedTab);
             }
-            
-            // 체크리스트 상태 로드
             loadChecklistState();
-            
-            // 이미지 지연 로딩 처리
             handleLazyImages();
-            
-            // 이미지 오류 처리
             handleImageErrors();
         });
     </script>
