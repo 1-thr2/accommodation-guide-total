@@ -34,16 +34,22 @@
             background-color: #F9FAFB;
             color: var(--text-color);
             line-height: 1.6;
+            width: 100%;
+            overflow-x: hidden;
         }
         
         .container {
             max-width: 640px;
+            width: 100%;
             margin: 0 auto;
             padding: 20px 16px 40px;
+            box-sizing: border-box;
+            overflow-x: hidden;
         }
         
         header {
             margin-bottom: 24px;
+            width: 100%;
         }
         
         h1 {
@@ -69,6 +75,8 @@
             display: flex;
             align-items: center;
             animation: fadeIn 0.5s ease;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .welcome-icon {
@@ -82,6 +90,7 @@
             justify-content: center;
             margin-right: 16px;
             font-size: 18px;
+            flex-shrink: 0;
         }
         
         /* 탭 스타일 */
@@ -92,10 +101,12 @@
             background-color: #F9FAFB;
             padding: 12px 0;
             margin-bottom: 24px;
+            width: 100%;
         }
         
         .tabs {
             display: flex;
+            width: 100%;
             background-color: #FFFFFF;
             border-radius: 12px;
             overflow: hidden;
@@ -132,6 +143,7 @@
         
         .tab-content {
             display: none;
+            width: 100%;
         }
         
         .tab-content.active {
@@ -152,6 +164,7 @@
             border: 1px solid var(--border-color);
             overflow: hidden;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
         }
         
         .card:hover {
@@ -184,11 +197,13 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
+            width: 100%;
         }
         
         .info-item {
             display: flex;
             align-items: flex-start;
+            width: 100%;
         }
         
         .info-icon {
@@ -225,16 +240,19 @@
             background-color: #F2F4F6;
             border-radius: 12px;
             overflow: hidden;
+            width: 100%;
         }
         
         .info-image {
             width: 100%;
             display: block;
+            max-width: 100%;
         }
         
         /* 오시는 길 스타일 */
         .directions-list {
             margin-top: 20px;
+            width: 100%;
         }
         
         .direction-step {
@@ -244,6 +262,7 @@
             overflow: hidden;
             border: 1px solid var(--border-color);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
         }
         
         .direction-step:hover {
@@ -323,11 +342,14 @@
             font-size: 0.95rem;
             display: flex;
             align-items: center;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .notice-icon {
             font-size: 1.2rem;
             margin-right: 12px;
+            flex-shrink: 0;
         }
 
         .success-notice {
@@ -341,6 +363,8 @@
             align-items: center;
             text-align: center;
             justify-content: center;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .tip {
@@ -350,6 +374,8 @@
             border-radius: 12px;
             margin: 16px 0;
             font-size: 0.95rem;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .tip::before {
@@ -420,6 +446,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            width: 100%;
         }
         
         .checklist-header {
@@ -444,6 +471,7 @@
             padding: 12px 0;
             border-bottom: 1px solid var(--border-color);
             min-height: 44px;
+            width: 100%;
         }
         
         .checklist-item:last-child {
@@ -502,6 +530,8 @@
             margin-top: 32px;
             text-align: center;
             border: 1px solid var(--border-color);
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .host-contact-title {
