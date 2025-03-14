@@ -38,7 +38,7 @@
         
         header {
             text-align: center;
-            margin: 24px 0 20px;
+            margin: 24px 0 32px;
             padding: 0 16px;
         }
         
@@ -59,38 +59,41 @@
         /* 탭 스타일 */
         .tabs {
             display: flex;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             background-color: white;
-            border-radius: var(--border-radius);
+            border-radius: 60px;
             overflow: hidden;
             box-shadow: var(--box-shadow);
-            position: sticky;
-            top: 16px;
+            position: relative;
             z-index: 100;
         }
         
         .tab {
             flex: 1;
             text-align: center;
-            padding: 16px;
+            padding: 16px 0;
             cursor: pointer;
             font-weight: 500;
             transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
             color: var(--sub-text-color);
             position: relative;
+            border-bottom: 3px solid transparent;
         }
         
         .tab.active {
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--primary-color);
+            color: var(--highlight-color);
             font-weight: 700;
+            border-bottom: 3px solid var(--highlight-color);
         }
         
         .tab-icon {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
             display: block;
+        }
+        
+        .tab-label {
+            font-size: 0.95rem;
         }
         
         .tab-content {
@@ -105,6 +108,43 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+        
+        /* 상단 바 스타일 */
+        .top-bar {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 14px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            z-index: 100;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .location-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            margin-right: 12px;
+            position: relative;
+        }
+        
+        .location-dot::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(49, 130, 246, 0.2);
+        }
+        
+        .location-text {
+            font-weight: 500;
+            color: var(--text-color);
         }
         
         /* 카드 스타일 */
@@ -206,28 +246,70 @@
             object-fit: contain;
         }
         
-        .footer {
+        /* 찾아오는 길 스타일 */
+        .guide-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .guide-step {
+            display: flex;
+            flex-direction: column;
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 24px;
-            text-align: center;
+            overflow: hidden;
             box-shadow: var(--box-shadow);
-            margin-top: 40px;
         }
         
-        .footer-title {
-            font-size: 1.4rem;
-            color: var(--text-color);
+        .step-image-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+            min-height: 320px;
+            background-color: #F2F4F6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .step-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+        }
+        
+        .step-content {
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 36px;
+            height: 36px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border-radius: 50%;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-right: 16px;
+            flex-shrink: 0;
+            font-size: 1.1rem;
         }
         
-        .emoji {
-            font-size: 2rem;
-            margin-bottom: 16px;
-            display: block;
+        .step-description {
+            font-size: 1.05rem;
+            color: var(--text-color);
+            font-weight: 400;
+            line-height: 1.5;
         }
         
+        /* 퇴실 체크리스트 스타일 */
         .checklist-item {
             display: flex;
             align-items: flex-start;
@@ -275,6 +357,63 @@
             padding-top: 3px;
         }
         
+        .footer {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            margin-top: 40px;
+        }
+        
+        .footer-title {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+        
+        /* 비밀번호 공지 */
+        .key-notice {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #FFF5F5;
+            border-radius: 12px;
+            font-weight: 500;
+            color: #E03131;
+            text-align: center;
+        }
+        
+        .key-notice p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        /* 프로그레스 바 */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: rgba(242, 244, 246, 0.8);
+            z-index: 1000;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+        
         @media (max-width: 640px) {
             h1 {
                 font-size: 1.7rem;
@@ -302,9 +441,13 @@
                 font-size: 0.95rem;
             }
             
-            .tab {
-                padding: 12px 8px;
-                font-size: 0.9rem;
+            .tab-icon {
+                font-size: 1.3rem;
+                margin-bottom: 4px;
+            }
+            
+            .tab-label {
+                font-size: 0.85rem;
             }
             
             .step-image-container {
@@ -328,6 +471,11 @@
     </style>
 </head>
 <body>
+    <!-- 프로그레스 바 -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
     <div class="container">
         <header>
             <h1>728호 숙소 정보</h1>
@@ -336,22 +484,22 @@
         
         <!-- 탭 메뉴 -->
         <div class="tabs">
-            <div class="tab active" onclick="openTab('info')">
-                <span class="tab-icon">📋</span>
-                숙소 안내사항
+            <div class="tab" onclick="openTab('info')">
+                <div class="tab-icon">📋</div>
+                <div class="tab-label">숙소 안내사항</div>
             </div>
-            <div class="tab" onclick="openTab('directions')">
-                <span class="tab-icon">🚶</span>
-                오시는 길
+            <div class="tab active" onclick="openTab('directions')">
+                <div class="tab-icon">🚶</div>
+                <div class="tab-label">오시는 길</div>
             </div>
             <div class="tab" onclick="openTab('checkout')">
-                <span class="tab-icon">✅</span>
-                퇴실 체크리스트
+                <div class="tab-icon">✅</div>
+                <div class="tab-label">퇴실 체크리스트</div>
             </div>
         </div>
         
-        <!-- 안내사항 탭 내용 -->
-        <div id="info" class="tab-content active">
+        <!-- 숙소 안내사항 탭 내용 -->
+        <div id="info" class="tab-content">
             <div class="info-cards">
                 <!-- 체크인/체크아웃 정보 -->
                 <div class="info-card">
@@ -429,13 +577,18 @@
         </div>
         
         <!-- 오시는 길 탭 내용 -->
-        <div id="directions" class="tab-content">
+        <div id="directions" class="tab-content active">
+            <div class="top-bar">
+                <div class="location-dot"></div>
+                <div class="location-text">728호 숙소</div>
+            </div>
+            
             <div class="guide-steps">
                 <div class="guide-step">
                     <div class="step-image-container">
                         <img src="guide_1.JPG" alt="남포역 7번 출구" class="step-image">
                     </div>
-                        <div class="step-content">
+                    <div class="step-content">
                         <div class="step-number">1</div>
                         <div class="step-description"><span class="highlight">남포역 7번 출구</span>에서 나오세요.</div>
                     </div>
@@ -532,14 +685,8 @@
                 </div>
             </div>
             
-            <div class="info-card" style="margin-top: 20px;">
-                <div class="card-header">
-                    <div class="card-icon">🔑</div>
-                    <div class="card-title">비밀번호 안내</div>
-                </div>
-                <div class="card-content">
-                    <p class="important">⚠️ 공동현관 비밀번호와 숙소 비밀번호는 입실 당일 아침에 알려드립니다.</p>
-                </div>
+            <div class="key-notice">
+                <p>⚠️ 공동현관 비밀번호와 숙소 비밀번호는 입실 당일 아침에 알려드립니다.</p>
             </div>
         </div>
         
@@ -606,81 +753,4 @@
                 <div class="info-card">
                     <div class="card-header">
                         <div class="card-icon">💬</div>
-                        <div class="card-title">후기 남기기</div>
-                    </div>
-                    <div class="card-content">
-                        <p>숙소에서의 경험이 어떠셨나요? 개선할 점이나 좋았던 점을 알려주시면 더 나은 서비스를 제공하는데 큰 도움이 됩니다.</p>
-                        <p>에어비앤비에 <span class="highlight">후기를 남겨주시면</span> 정말 감사하겠습니다! 💕</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <span class="emoji">📱</span>
-            <div class="footer-title">궁금한 점이 있으신가요?</div>
-            <p>편하게 메시지로 문의해 주세요. 항상 도와드릴 준비가 되어 있습니다!</p>
-        </div>
-    </div>
-    
-    <script>
-        // 탭 전환 함수
-        function openTab(tabId) {
-            // 모든 탭 컨텐츠 숨기기
-            var tabContents = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < tabContents.length; i++) {
-                tabContents[i].classList.remove("active");
-            }
-            
-            // 모든 탭 버튼 비활성화
-            var tabs = document.getElementsByClassName("tab");
-            for (var i = 0; i < tabs.length; i++) {
-                tabs[i].classList.remove("active");
-            }
-            
-            // 선택한 탭 컨텐츠와 버튼 활성화
-            document.getElementById(tabId).classList.add("active");
-            
-            // 클릭한 탭 버튼 찾기
-            for (var i = 0; i < tabs.length; i++) {
-                if (tabId === "info" && tabs[i].textContent.trim().includes("숙소 안내사항")) {
-                    tabs[i].classList.add("active");
-                    break;
-                } else if (tabId === "directions" && tabs[i].textContent.trim().includes("오시는 길")) {
-                    tabs[i].classList.add("active");
-                    break;
-                } else if (tabId === "checkout" && tabs[i].textContent.trim().includes("퇴실 체크리스트")) {
-                    tabs[i].classList.add("active");
-                    break;
-                }
-            }
-        }
-        
-        // 체크박스 토글 함수
-        function toggleCheck(element) {
-            element.classList.toggle("checked");
-        }
-        
-        // 이미지가 로드되지 않았을 때 대체 텍스트 표시
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.info-image');
-            
-            images.forEach(img => {
-                img.addEventListener('error', function() {
-                    this.style.display = 'none';
-                    const errorMsg = document.createElement('div');
-                    errorMsg.textContent = '이미지를 불러올 수 없어요 😢';
-                    errorMsg.style.padding = '20px';
-                    errorMsg.style.textAlign = 'center';
-                    errorMsg.style.color = '#8B95A1';
-                    errorMsg.style.display = 'flex';
-                    errorMsg.style.alignItems = 'center';
-                    errorMsg.style.justifyContent = 'center';
-                    errorMsg.style.fontWeight = '500';
-                    this.parentNode.appendChild(errorMsg);
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+                        <div class="card-title">후기
